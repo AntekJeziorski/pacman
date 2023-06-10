@@ -6,6 +6,7 @@ public class Wall extends SceneObject {
         uploadImage("src/images/wall.png");
         x = new_x;
         y = new_y;
+        width = image.getWidth(null);
+        height = image.getHeight(null);
     }
-
 }

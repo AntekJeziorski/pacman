@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 
 public class MazePanel extends JPanel {
-    private MazeGenerator mazeGenerator;
+    private final MazeGenerator mazeGenerator;
 
 
     public MazePanel() {
@@ -17,8 +17,19 @@ public class MazePanel extends JPanel {
         setFocusable(true);
         setBackground(Color.black);
         setLayout(null);
+
+    }
+    private void drawObjects(Graphics graphics)
+    {
+        mazeGenerator.showMaze(graphics, this);
+        Toolkit.getDefaultToolkit().sync();
     }
 
-
+    @Override
+    public void paintComponent(Graphics graphics)
+    {
+        super.paintComponent(graphics);
+        drawObjects(graphics);
+    }
 
 }

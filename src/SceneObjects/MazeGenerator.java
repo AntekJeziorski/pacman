@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MazeGenerator {
-    private List<Wall> walls;
+    private List<SceneObject> walls;
 
     public MazeGenerator() {
-        walls = new ArrayList<Wall>();
+        walls = new ArrayList<>();
         for(int i = 0; i < 400; i++) {
             for(int j = 0; j < 400; j++) {
-                walls.add(new Wall(i,j));
+                walls.add(new Wall(i, j));
             }
         }
     }
@@ -24,7 +24,7 @@ public class MazeGenerator {
         }
     }
 
-    public List<Wall> getWalls() {
+    public List<SceneObject> getWalls() {
         return walls;
     }
 }

@@ -1,36 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="start">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameWindow/GameOverWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameWindow/GameWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameWindow/MainWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameWindow/Pacman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Panels/MazePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SceneObjects/MazeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SceneObjects/SceneObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SceneObjects/Wall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Settings/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/down2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/down3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/file.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/ghost.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/left2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/left3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/pacman.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/right2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/right3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/up1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/up2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/up3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/wall.png" afterDir="false" />
+    <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="add classes for views.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameWindow/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow/Pacman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Panels/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panels/MazePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SceneObjects/MazeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/MazeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SceneObjects/SceneObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/SceneObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SceneObjects/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/Wall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +72,14 @@
       <option name="presentableId" value="Default" />
       <updated>1686229998632</updated>
     </task>
+    <task id="LOCAL-00001" summary="add classes for views.">
+      <created>1686352151445</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686352151445</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +104,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add classes for views." />
+    <option name="LAST_COMMIT_MESSAGE" value="add classes for views." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

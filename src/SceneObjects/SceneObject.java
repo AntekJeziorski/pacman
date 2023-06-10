@@ -12,9 +12,11 @@ public class SceneObject {
 
     protected int x;
     protected int y;
-    protected int width = 16;
-    protected int height = 16;
+    protected int width;
+    protected int height;
     protected Image image;
+
+    public SceneObject() {}
 
     public Dictionary<String, Integer> getPosition() {
         Dictionary<String, Integer> position =  new Hashtable<>();
@@ -23,8 +25,14 @@ public class SceneObject {
         return position;
     }
 
+    protected int randNumber(int min, int max)
+    {
+        return (min + (int) (Math.random() * ((max - min) + 1))) * 10;
+    }
+
     protected void uploadImage(String imagePath) {
-        image = new ImageIcon(imagePath).getImage();
+        ImageIcon tmp = new ImageIcon(imagePath);
+        image =  tmp.getImage();
     }
 
     public void show(Graphics graph, MazePanel maze) {
