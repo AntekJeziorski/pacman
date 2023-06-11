@@ -11,11 +11,19 @@ public class MazeGenerator {
 
     public MazeGenerator() {
         walls = new ArrayList<>();
-        for(int i = 0; i < 400; i++) {
-            for(int j = 0; j < 400; j++) {
-                walls.add(new Wall(i, j));
-            }
-        }
+        walls.add(new Wall(0, 0));
+        walls.add(new Wall(0, 16));
+        walls.add(new Wall(0, 32));
+        walls.add(new Wall(16, 0));
+        walls.add(new Wall(48-16, 48-16));
+        walls.add(new Wall(200-8, 200-8));
+        walls.add(new Wall(200-8, 0));
+        walls.add(new Wall(400-16, 0));
+//        for(int i = 0; i < 10; i++) {
+//            for(int j = 0; j < 10; j++) {
+//                walls.add(new Wall(400, 400));
+//            }
+//        }
     }
 
     public void showMaze(Graphics graph, MazePanel maze) {

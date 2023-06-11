@@ -12,12 +12,10 @@ public class MazePanel extends JPanel {
 
     public MazePanel() {
         mazeGenerator = new MazeGenerator();
-
-
         setFocusable(true);
+        setPreferredSize(new Dimension(400, 400));
         setBackground(Color.black);
         setLayout(null);
-
     }
     private void drawObjects(Graphics graphics)
     {

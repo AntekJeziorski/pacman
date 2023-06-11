@@ -2,6 +2,7 @@ package GameWindow;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class Pacman extends JFrame {
     static JPanel mainWindow;
@@ -15,11 +16,18 @@ public class Pacman extends JFrame {
         mainWindow.add(new GameWindow());
         add(mainWindow);
         setResizable(false);
-        setPreferredSize(new Dimension(800, 800));
+        setPreferredSize(new Dimension(450, 500));
         pack();
         setTitle("Pacman");
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        File iconFile = new File("src/images/right3.png");
+        if (iconFile.exists()) {
+            ImageIcon icon = new ImageIcon(iconFile.getAbsolutePath());
+            setIconImage(icon.getImage());
+        }
+
     }
 
     public static void openGameWindow() {
@@ -29,6 +37,7 @@ public class Pacman extends JFrame {
         mainWindow.revalidate();
         mainWindow.repaint();
         gameWindow.requestFocusInMazePanel();
+
     }
     public static void run()
     {

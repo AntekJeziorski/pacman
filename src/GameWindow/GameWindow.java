@@ -12,7 +12,7 @@ import java.beans.PropertyChangeListener;
 public class GameWindow extends JPanel {
     private final GridBagConstraints gbc;
     private MazePanel mazePanel;
-
+    JButton button;
     public GameWindow()
     {
         mazePanel = new MazePanel();
@@ -23,10 +23,15 @@ public class GameWindow extends JPanel {
 
     private void initMazePanel()
     {
-        gbc.gridy = 1;
-        gbc.weighty = 1.0;
-        gbc.ipady = 0;
+        button = new JButton("Button 1");
         gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        add(button, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.CENTER;
         add(mazePanel, gbc);
     }
 
