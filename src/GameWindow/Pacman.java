@@ -16,7 +16,7 @@ public class Pacman extends JFrame {
         mainWindow.add(new GameWindow());
         add(mainWindow);
         setResizable(false);
-        setPreferredSize(new Dimension(450, 500));
+        setPreferredSize(new Dimension(550, 700));
         pack();
         setTitle("Pacman");
         setLocationRelativeTo(null);
