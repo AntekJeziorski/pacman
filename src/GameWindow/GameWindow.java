@@ -23,11 +23,11 @@ public class GameWindow extends JPanel {
 
     private void initMazePanel()
     {
-        button = new JButton("Button 1");
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        add(button, gbc);
+//        button = new JButton("Button 1");
+//        gbc.fill = GridBagConstraints.BOTH;
+//        gbc.gridx = 0;
+//        gbc.gridy = 0;
+//        add(button, gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 1;

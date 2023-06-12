@@ -20,20 +20,20 @@ public class PacmanObject extends SceneObject implements Runnable {
         int currentDirection = controls.getDirection();
         switch (currentDirection){
             case 0:
-                x = x-1;
-                System.out.println("Left");
+                x = x-4;
+//                System.out.println("Left");
                 break;
             case 1:
-                System.out.println("Up");
-                y = y-1;
+//                System.out.println("Up");
+                y = y-4;
                 break;
             case 2:
-                System.out.println("Right");
-                x = x+1;
+//                System.out.println("Right");
+                x = x+4;
                 break;
             case 3:
-                System.out.println("Down");
-                y = y+1;
+//                System.out.println("Down");
+                y = y+4;
                 break;
             default:
                 break;

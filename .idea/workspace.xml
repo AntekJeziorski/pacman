@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="Add pacman">
-      <change afterPath="$PROJECT_DIR$/src/threads/IDAssigner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/threads/PooledThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/threads/Test1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/threads/Test2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/threads/ThreadPool.java" afterDir="false" />
+    <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="Add idk">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameWindow/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow/GameWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panels/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panels/MazePanel.java" afterDir="false" />
@@ -117,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686590241493</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add idk">
+      <created>1686607394028</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686607394028</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,7 +149,8 @@
     <MESSAGE value="add classes for views." />
     <MESSAGE value="Add displaying map and collisions" />
     <MESSAGE value="Add pacman" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add pacman" />
+    <MESSAGE value="Add idk" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add idk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

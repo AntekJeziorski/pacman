@@ -10,7 +10,7 @@ public class Controls extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent event)
     {
-        System.out.println("Key Pressed");
+//        System.out.println("Key Pressed");
         int key = event.getKeyCode();
         switch (key){
             case KeyEvent.VK_LEFT:

@@ -21,12 +21,12 @@ public class MazePanel extends JPanel implements ActionListener {
     public MazePanel() {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14,26);
-        timer = new Timer(1000, this);
+        timer = new Timer(100, this);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
               int event = e.getKeyCode();
-                System.out.println(event);
+//                System.out.println(event);
                 if (event == KeyEvent.VK_UP || event == KeyEvent.VK_DOWN || event == KeyEvent.VK_LEFT || event == KeyEvent.VK_RIGHT)
                 {
                     removeKeyListener(pacmanKeyAdapter);
@@ -66,7 +66,6 @@ public class MazePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Gówno");
         Thread thread = new Thread(pacman);
         thread.start();
         repaint();
