@@ -5,12 +5,12 @@ import java.awt.event.KeyEvent;
 
 public class Controls extends KeyAdapter {
 
-    private int direction = 0;
+    private int direction = 1;
 
     @Override
     public void keyPressed(KeyEvent event)
     {
-
+        System.out.println("Key Pressed");
         int key = event.getKeyCode();
         switch (key){
             case KeyEvent.VK_LEFT:

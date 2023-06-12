@@ -33,6 +33,8 @@ public class GameWindow extends JPanel {
         gbc.gridy = 1;
         gbc.fill = GridBagConstraints.CENTER;
         add(mazePanel, gbc);
+
+        mazePanel.initStartAdapter();
     }
 
     public void requestFocusInMazePanel()
