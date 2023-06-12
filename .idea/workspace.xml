@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="add classes for views.">
+      <change afterPath="$PROJECT_DIR$/src/SceneObjects/Air.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SceneObjects/Apple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SceneObjects/Dot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/dot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameWindow/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow/Pacman.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panels/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panels/MazePanel.java" afterDir="false" />
@@ -22,6 +30,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/add_resources" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -38,11 +51,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Acer/Desktop/AISwingSnake-master"
+    "last_opened_file_path": "C:/Users/jszym/IdeaProjects/pacman/src/images"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jszym\IdeaProjects\pacman\src\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jszym\IdeaProjects\pacman\src\images" />
       <recent name="C:\Users\Acer\Documents\java\pacman\src\images" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
