@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="draw walls">
+    <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="Add collisions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Panels/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panels/MazePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SceneObjects/PacmanObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/PacmanObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +117,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686607394028</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add collisions">
+      <created>1686669537508</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686669537508</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add collisions">
+      <created>1686669727922</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686669727922</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,7 +162,8 @@
     <MESSAGE value="Add displaying map and collisions" />
     <MESSAGE value="Add pacman" />
     <MESSAGE value="Add idk" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add idk" />
+    <MESSAGE value="Add collisions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add collisions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
