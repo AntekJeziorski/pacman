@@ -22,7 +22,7 @@ public class MazePanel extends JPanel implements ActionListener {
     public MazePanel() {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14,26);
-        timer = new Timer(50, this);
+        timer = new Timer(1000, this);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -148,7 +148,7 @@ public class MazePanel extends JPanel implements ActionListener {
         if(block instanceof Dot) {
             if (pacman.getRect().intersects(block.getRect())) {
                 points++;
-                System.out.println(points);
+//                System.out.println(points);
                 mazeGenerator.deleteDot((pacmanPosY+yOffset-3)*width+(pacmanPosX+xOffset), block.getInfo().get("X"), block.getInfo().get("Y"));
             }
         }

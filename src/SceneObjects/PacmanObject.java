@@ -32,8 +32,8 @@ public class PacmanObject extends SceneObject implements Runnable {
     public void run() {
         int newDirection = controls.getDirection();
 
-        if(newDirection == -1)
-            currentDirection = lastDirection;
+//        if(newDirection == -1)
+//            currentDirection = lastDirection;
 
         if(newDirection != -1 && newDirection != currentDirection && x%width == 0 && y%height == 0 && !collision[newDirection]) {
             currentDirection = newDirection;
@@ -67,10 +67,10 @@ public class PacmanObject extends SceneObject implements Runnable {
                 setRect();
                 break;
             default:
-                currentDirection = lastDirection;
+//                currentDirection = lastDirection;
                 break;
         }
-        lastDirection = currentDirection;
+//        lastDirection = currentDirection;
         switchImage(currentDirection);
     }
 
