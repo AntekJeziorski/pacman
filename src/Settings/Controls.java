@@ -25,6 +25,8 @@ public class Controls extends KeyAdapter {
             case KeyEvent.VK_DOWN:
                 direction = 3;
                 break;
+            default:
+                break;
         }
     }
 

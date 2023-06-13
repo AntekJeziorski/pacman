@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="Add idk">
+    <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="draw walls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameWindow/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameWindow/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Panels/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panels/MazePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SceneObjects/PacmanObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/PacmanObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Settings/Controls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/Controls.java" afterDir="false" />
     </list>
@@ -45,7 +43,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/jszym/IdeaProjects/pacman/src"
+    "last_opened_file_path": "C:/Users/Acer/Documents/java/pacman"
   }
 }]]></component>
   <component name="RecentsManager">
