@@ -9,7 +9,7 @@ public class PacmanObject extends SceneObject implements Runnable {
     private final Controls controls = new Controls();
     private int currentDirection;
     private int lastDirection;
-    private boolean collision;
+    private boolean [] collision;
 
     private Image[] pacmanImages = new Image[4];
     public PacmanObject(int new_x, int new_y) {
@@ -31,37 +31,43 @@ public class PacmanObject extends SceneObject implements Runnable {
     @Override
     public void run() {
         int newDirection = controls.getDirection();
+//        if(collision[currentDirection])
+//            currentDirection = lastDirection;
+
+
+        if(newDirection != -1 && newDirection != currentDirection && x%width == 0 && y%height == 0 && !collision[newDirection]) {
+            currentDirection = newDirection;
+        }
 
         switch (currentDirection){
             case 0:
-                if(!collision)
+                if(!collision[0])
                     x = x-4;
                 setRect();
 //                System.out.println("Left");
                 break;
             case 1:
 //                System.out.println("Up");
-                if(!collision)
+                if(!collision[1])
                     y = y-4;
                 setRect();
                 break;
             case 2:
 //                System.out.println("Right");
-                if(!collision)
+                if(!collision[2])
                     x = x+4;
                 setRect();
                 break;
             case 3:
 //                System.out.println("Down");
-                if(!collision)
+                if(!collision[3])
                     y = y+4;
                 setRect();
                 break;
             default:
                 break;
         }
-        if(newDirection != currentDirection && x%width == 0 && y%height == 0)
-            currentDirection = newDirection;
+//        lastDirection = currentDirection;
         switchImage(currentDirection);
     }
 
@@ -79,5 +85,5 @@ public class PacmanObject extends SceneObject implements Runnable {
 
     public Controls getKeyAdapter(){return controls;}
 
-    public void setCollision(boolean coll) {collision = coll;}
+    public void setCollision(boolean[] coll) {collision = coll;}
 }

@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="Add collisions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Panels/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panels/MazePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SceneObjects/PacmanObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/PacmanObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Settings/Controls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Settings/Controls.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +133,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686669727922</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add collisions">
+      <created>1686669826604</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686669826604</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add collisions">
+      <created>1686669893792</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686669893792</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

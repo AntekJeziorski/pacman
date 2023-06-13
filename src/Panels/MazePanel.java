@@ -4,6 +4,7 @@ import SceneObjects.MazeGenerator;
 import SceneObjects.PacmanObject;
 import SceneObjects.SceneObject;
 import SceneObjects.Wall;
+import Settings.Controls;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,46 +64,54 @@ public class MazePanel extends JPanel implements ActionListener {
         int width = 28;
         int pacmanPosX = pacman.getInfo().get("X")/pacman.getInfo().get("Width");
         int pacmanPosY = pacman.getInfo().get("Y")/pacman.getInfo().get("Height");
-        int pacmanDirection = pacman.getCurrentDirection();
+//        int pacmanDirection = pacman.getCurrentDirection();
         int xOffset = 0;
         int yOffset = 0;
-        SceneObject block;
+        SceneObject[] blocks = new SceneObject[4];
+        boolean [] out = new boolean[4];
 
-        switch (pacmanDirection){
-            case 0:
-                xOffset = -1;
-                yOffset = 0;
-                break;
-            case 1:
-                xOffset = 0;
-                yOffset = -1;
-                break;
-            case 2:
-                xOffset = 1;
-                yOffset = 0;
-                break;
-            case 3:
-                xOffset = 0;
-                yOffset = 1;
-                break;
-            default:
-                break;
-        }
+//        switch (pacmanDirection){
+//            case 0:
+//                xOffset = -1;
+//                yOffset = 0;
+//                break;
+//            case 1:
+//                xOffset = 0;
+//                yOffset = -1;
+//                break;
+//            case 2:
+//                xOffset = 1;
+//                yOffset = 0;
+//                break;
+//            case 3:
+//                xOffset = 0;
+//                yOffset = 1;
+//                break;
+//            default:
+//                break;
+//        }
 
-        block = mazeGenerator.getWalls().get((pacmanPosY+yOffset-3)*width+(pacmanPosX+xOffset));
+        blocks[0] = mazeGenerator.getWalls().get((pacmanPosY-3)*width+(pacmanPosX-1));
+        blocks[1] = mazeGenerator.getWalls().get((pacmanPosY-4)*width+(pacmanPosX));
+        blocks[2] = mazeGenerator.getWalls().get((pacmanPosY-3)*width+(pacmanPosX+1));
+        blocks[3] = mazeGenerator.getWalls().get((pacmanPosY-2)*width+(pacmanPosX));
 //        System.out.print("X:");
 //        System.out.print(pacmanPosX+xOffset);
 //        System.out.print("Y:");
 //        System.out.println(pacmanPosY+yOffset);
-        if(block instanceof Wall) {
-            System.out.println("Wall!!!");
-            if (pacman.getRect().intersects(block.getRect())) {
+        for (int i = 0; i < blocks.length; i++) {
+            if(blocks[i] instanceof Wall) {
+                System.out.println("Wall!!!");
+                if (pacman.getRect().intersects(blocks[i].getRect())) {
 //                System.out.println("Intersects");
-                pacman.setCollision(true);
+                    out[i] = true;
+                }
             }
+            else
+                out[i] = false;
         }
-        else
-            pacman.setCollision(false);
+        pacman.setCollision(out);
+
     }
 
     @Override

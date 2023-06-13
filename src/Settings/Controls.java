@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 public class Controls extends KeyAdapter {
 
-    private int direction = 1;
+    private int direction = -1;
 
     @Override
     public void keyPressed(KeyEvent event)
@@ -26,9 +26,14 @@ public class Controls extends KeyAdapter {
                 direction = 3;
                 break;
             default:
+                direction = -1;
                 break;
         }
     }
 
-    public int getDirection() {return direction;}
+    public int getDirection() {
+        int newDirection = direction;
+        direction = -1;
+        return newDirection;
+    }
 }
