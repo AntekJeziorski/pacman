@@ -94,4 +94,11 @@ public class MazeGenerator {
     public List<SceneObject> getWalls() {
         return walls;
     }
+
+    public List<SceneObject> getDots() { return dots; }
+
+    public void deleteDot(int pos, int x, int y) {
+        dots.set(pos, new Air(x, y));
+    }
+
 }

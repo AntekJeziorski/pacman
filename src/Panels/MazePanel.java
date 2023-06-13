@@ -1,9 +1,6 @@
 package Panels;
 
-import SceneObjects.MazeGenerator;
-import SceneObjects.PacmanObject;
-import SceneObjects.SceneObject;
-import SceneObjects.Wall;
+import SceneObjects.*;
 import Settings.Controls;
 
 import javax.swing.*;
@@ -19,11 +16,13 @@ public class MazePanel extends JPanel implements ActionListener {
     private final Timer timer;
     private KeyAdapter pacmanKeyAdapter;
 
+    private int points = 0;
+
 
     public MazePanel() {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14,26);
-        timer = new Timer(100, this);
+        timer = new Timer(50, this);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -101,7 +100,7 @@ public class MazePanel extends JPanel implements ActionListener {
 //        System.out.println(pacmanPosY+yOffset);
         for (int i = 0; i < blocks.length; i++) {
             if(blocks[i] instanceof Wall) {
-                System.out.println("Wall!!!");
+//                System.out.println("Wall!!!");
                 if (pacman.getRect().intersects(blocks[i].getRect())) {
 //                System.out.println("Intersects");
                     out[i] = true;
@@ -113,6 +112,48 @@ public class MazePanel extends JPanel implements ActionListener {
         pacman.setCollision(out);
 
     }
+
+    public void eat()
+    {
+        int width = 28;
+        int pacmanPosX = pacman.getInfo().get("X")/pacman.getInfo().get("Width");
+        int pacmanPosY = pacman.getInfo().get("Y")/pacman.getInfo().get("Height");
+        int pacmanDirection = pacman.getCurrentDirection();
+        int xOffset = 0;
+        int yOffset = 0;
+
+//        switch (pacmanDirection){
+//            case 0:
+//                xOffset = -1;
+//                yOffset = 0;
+//                break;
+//            case 1:
+//                xOffset = 0;
+//                yOffset = -1;
+//                break;
+//            case 2:
+//                xOffset = 0;
+//                yOffset = 0;
+//                break;
+//            case 3:
+//                xOffset = 0;
+//                yOffset = 0;
+//                break;
+//            default:
+//                break;
+//        }
+
+        SceneObject block = mazeGenerator.getDots().get((pacmanPosY-3)*width+(pacmanPosX));
+
+        if(block instanceof Dot) {
+            if (pacman.getRect().intersects(block.getRect())) {
+                points++;
+                System.out.println(points);
+                mazeGenerator.deleteDot((pacmanPosY-3)*width+(pacmanPosX), block.getInfo().get("X"), block.getInfo().get("Y"));
+            }
+        }
+    }
+
 
     @Override
     public void paintComponent(Graphics graphics)
@@ -126,6 +167,7 @@ public class MazePanel extends JPanel implements ActionListener {
         Thread thread = new Thread(pacman);
         thread.start();
         checkCollisions();
+        eat();
         repaint();
     }
 }

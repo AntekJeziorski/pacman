@@ -9,6 +9,6 @@ public class Dot extends SceneObject{
         height = image.getHeight(null);
         x = new_x * width;
         y = new_y * height;
-        rectangle = new Rectangle(x,y,width,height);
+        rectangle = new Rectangle(x+4,y+4,8,8);
     }
 }
