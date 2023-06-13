@@ -60,7 +60,7 @@ public class PacmanObject extends SceneObject implements Runnable {
             default:
                 break;
         }
-        if(newDirection != currentDirection && x%width == 0 && y%height == 0)
+        if(newDirection != currentDirection && x%width == 0 && y%height == 0)``
             currentDirection = newDirection;
         switchImage(currentDirection);
     }
