@@ -7,7 +7,9 @@ import java.awt.*;
 
 public class PacmanObject extends SceneObject implements Runnable {
     private final Controls controls = new Controls();
+    private int currentDirection;
     private int lastDirection;
+    private boolean collision;
 
     private Image[] pacmanImages = new Image[4];
     public PacmanObject(int new_x, int new_y) {
@@ -21,42 +23,61 @@ public class PacmanObject extends SceneObject implements Runnable {
         height = image.getHeight(null);
         x = new_x * width;
         y = new_y * height;
-        rectangle = new Rectangle(x-1,y-1,width+2,height+2);
+//        rectangle = new Rectangle(x-1,y-1,width+2,height+2);
+        setRect();
 
     }
 
     @Override
     public void run() {
-        int currentDirection = controls.getDirection();
-        if(currentDirection != lastDirection)
-            lastDirection = currentDirection;
-            switchImage(currentDirection);
+        int newDirection = controls.getDirection();
+
         switch (currentDirection){
             case 0:
-                x = x-4;
+                if(!collision)
+                    x = x-4;
+                setRect();
 //                System.out.println("Left");
                 break;
             case 1:
 //                System.out.println("Up");
-                y = y-4;
+                if(!collision)
+                    y = y-4;
+                setRect();
                 break;
             case 2:
 //                System.out.println("Right");
-                x = x+4;
+                if(!collision)
+                    x = x+4;
+                setRect();
                 break;
             case 3:
 //                System.out.println("Down");
-                y = y+4;
+                if(!collision)
+                    y = y+4;
+                setRect();
                 break;
             default:
                 break;
         }
+        if(newDirection != currentDirection && x%width == 0 && y%height == 0)
+            currentDirection = newDirection;
+        switchImage(currentDirection);
     }
 
     private void switchImage(int direction) {
         image = pacmanImages[direction];
     }
+    private void setRect() {
+        rectangle = new Rectangle(x-1,y-1,width+2,height+2);
+    }
 
+    public int getCurrentDirection()
+    {
+        return currentDirection;
+    }
 
     public Controls getKeyAdapter(){return controls;}
+
+    public void setCollision(boolean coll) {collision = coll;}
 }
