@@ -122,34 +122,34 @@ public class MazePanel extends JPanel implements ActionListener {
         int xOffset = 0;
         int yOffset = 0;
 
-//        switch (pacmanDirection){
-//            case 0:
-//                xOffset = -1;
-//                yOffset = 0;
-//                break;
-//            case 1:
-//                xOffset = 0;
-//                yOffset = -1;
-//                break;
-//            case 2:
-//                xOffset = 0;
-//                yOffset = 0;
-//                break;
-//            case 3:
-//                xOffset = 0;
-//                yOffset = 0;
-//                break;
-//            default:
-//                break;
-//        }
+        switch (pacmanDirection){
+            case 0:
+                xOffset = 1;
+                yOffset = 0;
+                break;
+            case 1:
+                xOffset = 0;
+                yOffset = 1;
+                break;
+            case 2:
+                xOffset = 0;
+                yOffset = 0;
+                break;
+            case 3:
+                xOffset = 0;
+                yOffset = 0;
+                break;
+            default:
+                break;
+        }
 
-        SceneObject block = mazeGenerator.getDots().get((pacmanPosY-3)*width+(pacmanPosX));
+        SceneObject block = mazeGenerator.getDots().get((pacmanPosY+yOffset-3)*width+(pacmanPosX+xOffset));
 
         if(block instanceof Dot) {
             if (pacman.getRect().intersects(block.getRect())) {
                 points++;
                 System.out.println(points);
-                mazeGenerator.deleteDot((pacmanPosY-3)*width+(pacmanPosX), block.getInfo().get("X"), block.getInfo().get("Y"));
+                mazeGenerator.deleteDot((pacmanPosY+yOffset-3)*width+(pacmanPosX+xOffset), block.getInfo().get("X"), block.getInfo().get("Y"));
             }
         }
     }

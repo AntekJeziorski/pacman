@@ -7,9 +7,6 @@
     <list default="true" id="5b8a3c61-2894-4e4b-8add-2dea31effb2e" name="Changes" comment="Add collisions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Panels/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Panels/MazePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SceneObjects/Dot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/Dot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SceneObjects/MazeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/MazeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SceneObjects/PacmanObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SceneObjects/PacmanObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
