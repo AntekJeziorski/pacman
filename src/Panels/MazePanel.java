@@ -22,7 +22,7 @@ public class MazePanel extends JPanel implements ActionListener {
     public MazePanel() {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14,26);
-        timer = new Timer(1000, this);
+        timer = new Timer(50, this);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
