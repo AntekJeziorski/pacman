@@ -13,21 +13,23 @@ public class Pacman extends JFrame {
 
     public void initializeWindow() {
         mainWindow = new JPanel(new CardLayout());
-        mainWindow.add(new GameWindow());
+        mainWindow.add(new MainWindow());
         add(mainWindow);
+        setTitle("Pacman");
         setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(550, 700));
         pack();
-        setTitle("Pacman");
+
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+
 
         File iconFile = new File("src/images/right3.png");
         if (iconFile.exists()) {
             ImageIcon icon = new ImageIcon(iconFile.getAbsolutePath());
             setIconImage(icon.getImage());
         }
-
     }
 
     public static void openGameWindow() {
@@ -37,8 +39,26 @@ public class Pacman extends JFrame {
         mainWindow.revalidate();
         mainWindow.repaint();
         gameWindow.requestFocusInMazePanel();
-
     }
+
+    public static void openMainWindow() {
+        MainWindow newMainWindow = new MainWindow();
+        mainWindow.removeAll();
+        mainWindow.add(newMainWindow);
+        mainWindow.revalidate();
+        mainWindow.repaint();
+        newMainWindow.requestFocusInWindow();
+    }
+
+    public static void openAboutWindow() {
+        AboutWindow aboutWindow = new AboutWindow();
+        mainWindow.removeAll();
+        mainWindow.add(aboutWindow);
+        mainWindow.revalidate();
+        mainWindow.repaint();
+        aboutWindow.requestFocusInWindow();
+    }
+
     public static void run()
     {
         EventQueue.invokeLater(() -> {
