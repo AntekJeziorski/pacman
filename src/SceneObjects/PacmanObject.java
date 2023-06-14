@@ -5,6 +5,8 @@ import Settings.Controls;
 import javax.swing.*;
 import java.awt.*;
 
+import static java.lang.Math.abs;
+
 public class PacmanObject extends SceneObject implements Runnable {
     private final Controls controls = new Controls();
     private int currentDirection;
@@ -32,11 +34,17 @@ public class PacmanObject extends SceneObject implements Runnable {
     public void run() {
         int newDirection = controls.getDirection();
 
-//        if(newDirection == -1)
-//            currentDirection = lastDirection;
+        if(newDirection == -1) {
+            newDirection = lastDirection;
+//            lastDirection = currentDirection;
+        }
 
-        if(newDirection != -1 && newDirection != currentDirection && x%width == 0 && y%height == 0 && !collision[newDirection]) {
-            currentDirection = newDirection;
+        System.out.println(newDirection + ", " + currentDirection + ", " + lastDirection);
+        if(newDirection != -1 && newDirection != currentDirection && !collision[newDirection]) {
+            if(abs(newDirection - currentDirection)%2 == 0)
+                currentDirection = newDirection;
+            if(x%width == 0 && y%height == 0)
+                currentDirection = newDirection;
         }
 
 
@@ -72,6 +80,10 @@ public class PacmanObject extends SceneObject implements Runnable {
         }
 //        lastDirection = currentDirection;
         switchImage(currentDirection);
+        if(newDirection != -1 && lastDirection != newDirection)
+            lastDirection = newDirection;
+        else
+            lastDirection = currentDirection;
     }
 
     private void switchImage(int direction) {
