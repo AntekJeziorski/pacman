@@ -59,6 +59,15 @@ public class Pacman extends JFrame {
         aboutWindow.requestFocusInWindow();
     }
 
+    public static void openLeaderBoardWindow() {
+        LeaderBoardWindow leaderBoardWindow = new LeaderBoardWindow();
+        mainWindow.removeAll();
+        mainWindow.add(leaderBoardWindow);
+        mainWindow.revalidate();
+        mainWindow.repaint();
+        leaderBoardWindow.requestFocusInWindow();
+    }
+
     public static void run()
     {
         EventQueue.invokeLater(() -> {

@@ -100,7 +100,7 @@ public class MainWindow extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == NewGameButton) { Pacman.openGameWindow(); }
-        if (e.getSource() == LeaderButton) { System.out.println("LeaderButton"); }
+        if (e.getSource() == LeaderButton) { Pacman.openLeaderBoardWindow(); }
         if (e.getSource() == AboutButton) { Pacman.openAboutWindow(); }
         if (e.getSource() == ExitButton) { System.exit(0); }
     }
