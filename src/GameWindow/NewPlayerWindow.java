@@ -118,7 +118,7 @@ public class NewPlayerWindow extends JPanel implements ActionListener {
                 ErrorLabel.setText("Nickname is too short!");
             }
             else{
-                Pacman.openGameWindow();
+                Pacman.openGameWindow(NickName.getText());
             }
         }
     }

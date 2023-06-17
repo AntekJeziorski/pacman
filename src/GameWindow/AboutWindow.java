@@ -45,6 +45,7 @@ public class AboutWindow extends JPanel implements ActionListener {
         JEditorPane Title = new JEditorPane();
         Title.setPreferredSize(new Dimension(400, 80));
         Title.setEditable(false);
+        Title.setFocusable(false);
         Title.setBackground(Color.BLACK);
         Title.setForeground(Color.YELLOW);
         Title.setFont(PixelFont.deriveFont(36f));
@@ -68,6 +69,7 @@ public class AboutWindow extends JPanel implements ActionListener {
         JEditorPane AboutText = new JEditorPane();
         AboutText.setPreferredSize(new Dimension(400,400));
         AboutText.setEditable(false);
+        AboutText.setFocusable(false);
         AboutText.setBackground(Color.BLACK);
         AboutText.setForeground(Color.YELLOW);
         AboutText.setFont(PixelFont.deriveFont(12f));

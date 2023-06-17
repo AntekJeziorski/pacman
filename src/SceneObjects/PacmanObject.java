@@ -44,10 +44,7 @@ public class PacmanObject extends SceneObject implements Runnable {
             if(x%width == 0 && y%height == 0)
                 currentDirection = newDirection;
         }
-
-
-
-        switch (currentDirection){
+        switch (currentDirection) {
             case 0:
                 if(!collision[0])
                     x = x-4;

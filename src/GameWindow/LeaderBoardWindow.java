@@ -41,6 +41,7 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
         JEditorPane Title = new JEditorPane();
         Title.setPreferredSize(new Dimension(450, 80));
         Title.setEditable(false);
+        Title.setFocusable(false);
         Title.setBackground(Color.BLACK);
         Title.setForeground(Color.YELLOW);
         Title.setFont(PixelFont.deriveFont(24f));
@@ -85,8 +86,6 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == BackButton){
-            Pacman.openMainWindow();
-        }
+        if (e.getSource() == BackButton){ Pacman.openMainWindow(); }
     }
 }
