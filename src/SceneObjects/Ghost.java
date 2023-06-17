@@ -75,6 +75,16 @@ public class Ghost extends SceneObject implements Runnable {
                 break;
         }
         switchImage(direction);
+        if(x/width == -1 && y/height == 14)
+        {
+            x = 27*width;
+            setRect();
+        }
+        if(x/width == 28 && y/height == 14)
+        {
+            x = 0;
+            setRect();
+        }
     }
 
     public void getPacmanPos(PacmanObject pacman){}
