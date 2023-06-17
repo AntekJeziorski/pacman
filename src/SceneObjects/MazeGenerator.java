@@ -49,37 +49,28 @@ public class MazeGenerator {
         {
             for(int j = 0; j < map[0].length; j++)
             {
-                switch (map[i][j])
-                {
-                    case 0: // Air
-                        walls.add(new Air(j, i+3));
-                        dots.add(new Air(j, i+3));
-                        break;
-                    case 1: // Wall
-                        walls.add(new Wall(j, i+3));
-                        dots.add(new Air(j, i+3));
-                        break;
-                    case 2: // Dot
-                        walls.add(new Air(j, i+3));
-                        dots.add(new Dot(j, i+3));
-                        break;
-                    case 3: // Apple
-                        walls.add(new Air(j, i+3));
-                        dots.add(new Apple(j, i+3));
-                        break;
-                    default:
-                        break;
+                switch (map[i][j]) {
+                    case 0 -> { // Air
+                        walls.add(new Air(j, i));
+                        dots.add(new Air(j, i));
+                    }
+                    case 1 -> { // Wall
+                        walls.add(new Wall(j, i));
+                        dots.add(new Air(j, i));
+                    }
+                    case 2 -> { // Dot
+                        walls.add(new Air(j, i));
+                        dots.add(new Dot(j, i));
+                    }
+                    case 3 -> { // Apple
+                        walls.add(new Air(j, i));
+                        dots.add(new Apple(j, i));
+                    }
+                    default -> {
+                    }
                 }
             }
         }
-
-
-
-//        walls.add(new Wall(0, 0));
-//        walls.add(new Wall(1, 0));
-        if(walls.get(0).getRect().intersects(walls.get(1).getRect()))
-            System.out.println("Intersects");
-
     }
 
     public void showMaze(Graphics graph, MazePanel maze) {
