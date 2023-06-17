@@ -11,9 +11,10 @@ import java.io.IOException;
 public class MainWindow extends JPanel implements ActionListener {
     private final ImageIcon PacManGif = new ImageIcon("src/images/pacman.gif");
     private final JButton NewGameButton = new JButton("New Game");
-    private final JButton LeaderButton = new JButton("Leader Board");;
-    private final JButton AboutButton  = new JButton("About");;
-    private final JButton ExitButton = new JButton("Exit");;
+    private final JButton LeaderButton = new JButton("Leader Board");
+    private final JButton AboutButton  = new JButton("About");
+    private final JButton ExitButton = new JButton("Exit");
+    private final JLabel BottomLabel = new JLabel("Developed by: S.A.J - 2023");
     private Font TitleFont;
     private Font ButtonFont;
 
@@ -89,17 +90,20 @@ public class MainWindow extends JPanel implements ActionListener {
         constraints.gridy = 5;
         add(ExitButton, constraints);
 
-        JLabel label = new JLabel("<html><p style='font-size:8px; color:white'></p>Developed by: S.A.J - 2023</html>");
+        BottomLabel.setForeground(Color.GRAY);
+        BottomLabel.setFont(ButtonFont.deriveFont(8f));
         constraints.gridx = 0;
         constraints.gridy = 6;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.CENTER;
-        add(label, constraints);
+        constraints.insets = new Insets(20, 0, 10, 0);
+
+        add(BottomLabel, constraints);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == NewGameButton) { Pacman.openGameWindow(); }
+        if (e.getSource() == NewGameButton) { Pacman.openNewPlayerWindow(); }
         if (e.getSource() == LeaderButton) { Pacman.openLeaderBoardWindow(); }
         if (e.getSource() == AboutButton) { Pacman.openAboutWindow(); }
         if (e.getSource() == ExitButton) { System.exit(0); }
