@@ -11,7 +11,6 @@ import java.util.Hashtable;
 import java.util.List;
 
 public class SceneObject extends Rectangle {
-
     protected int x;
     protected int y;
     protected int width;

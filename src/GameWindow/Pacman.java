@@ -22,6 +22,7 @@ public class Pacman extends JFrame {
         setPreferredSize(new Dimension(550, 700));
         pack();
         setLocationRelativeTo(null);
+
         File iconFile = new File("src/images/right3.png");
         if (iconFile.exists()) {
             ImageIcon icon = new ImageIcon(iconFile.getAbsolutePath());
@@ -35,8 +36,8 @@ public class Pacman extends JFrame {
         mainWindow.repaint();
     }
 
-    public static void openGameWindow() {
-        GameWindow gameWindow = new GameWindow();
+    public static void openGameWindow(String playerNickname) {
+        GameWindow gameWindow = new GameWindow(playerNickname);
         repaintNewWindow(gameWindow);
         gameWindow.requestFocusInMazePanel();
     }
@@ -63,6 +64,12 @@ public class Pacman extends JFrame {
         NewPlayerWindow NewPlayerWindow = new NewPlayerWindow();
         repaintNewWindow(NewPlayerWindow);
         NewPlayerWindow.requestFocusInWindow();
+    }
+
+    public static void openGameOverWindow(long earnedPoints) {
+        GameOverWindow NewGameOverWindow = new GameOverWindow(earnedPoints);
+        repaintNewWindow(NewGameOverWindow);
+        NewGameOverWindow.requestFocusInWindow();
     }
 
     public static void run() {
