@@ -37,6 +37,8 @@ public class Blinky extends Ghost{
                 pacmanX = currentPacmanX;
                 pacmanY = currentPacmanY + 1;
                 break;
+            default:
+                break;
         }
     }
 }

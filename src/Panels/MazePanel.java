@@ -16,11 +16,12 @@ import java.beans.PropertyChangeSupport;
 public class MazePanel extends JPanel implements ActionListener {
     private final MazeGenerator mazeGenerator;
     private final PacmanObject pacman;
-
-    private final Ghost ghost;
     private final Timer timer;
     private KeyAdapter pacmanKeyAdapter;
-
+    private Blinky blinky;
+    private Pinky pinky;
+    private Inky inky;
+    private Clyde clyde;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     private int points = 0;
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -31,7 +32,10 @@ public class MazePanel extends JPanel implements ActionListener {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14,23);
         timer = new Timer(50, this);
-        ghost = new Blinky(10,23);
+        blinky = new Blinky(11,11);
+        pinky = new Pinky(13,11);
+        inky = new Inky(14,11);
+        clyde = new Clyde(12, 11);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -54,7 +58,11 @@ public class MazePanel extends JPanel implements ActionListener {
     {
         mazeGenerator.showMaze(graphics, this);
         pacman.show(graphics, this);
-        ghost.show(graphics, this);
+        blinky.show(graphics, this);
+        pinky.show(graphics, this);
+        inky.show(graphics, this);
+        clyde.show(graphics, this);
+
         Toolkit.getDefaultToolkit().sync();
     }
     public int getPoints(){
@@ -91,7 +99,33 @@ public class MazePanel extends JPanel implements ActionListener {
                 out[i] = false;
         }
         pacman.setCollision(out);
+    }
 
+    public void checkGhostCollisions(Ghost ghost)
+    {
+        int width = 28;
+        int ghostPosX = ghost.getInfo().get("X")/ghost.getInfo().get("Width");
+        int ghostPosY = ghost.getInfo().get("Y")/ghost.getInfo().get("Height");
+        int xOffset = 0;
+        int yOffset = 0;
+        SceneObject[] blocks = new SceneObject[4];
+        boolean [] out = new boolean[4];
+
+        blocks[0] = mazeGenerator.getWalls().get((ghostPosY)*width+(ghostPosX-1));
+        blocks[1] = mazeGenerator.getWalls().get((ghostPosY-1)*width+(ghostPosX));
+        blocks[2] = mazeGenerator.getWalls().get((ghostPosY)*width+(ghostPosX+1));
+        blocks[3] = mazeGenerator.getWalls().get((ghostPosY+1)*width+(ghostPosX));
+
+        for (int i = 0; i < blocks.length; i++) {
+            if(blocks[i] instanceof Wall) {
+                if (ghost.getRect().intersects(blocks[i].getRect())) {
+                    out[i] = true;
+                }
+            }
+            else
+                out[i] = false;
+        }
+        ghost.setCollision(out);
     }
 
     public void eat()
@@ -135,10 +169,8 @@ public class MazePanel extends JPanel implements ActionListener {
             }
         }
     }
-    public void checkGhostCollision() {
-        System.out.println(ghost.getRect());
+    public void checkPacmanCollisionWithGhost(Ghost ghost) {
         if (pacman.getRect().intersects(ghost.getRect())) {
-
             timer.stop();
         }
     }
@@ -150,13 +182,37 @@ public class MazePanel extends JPanel implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        ghost.getPacmanPos(pacman);
+        blinky.getPacmanPos(pacman);
+        pinky.getPacmanPos(pacman);
+        inky.getPacmanPos(pacman);
+        clyde.getPacmanPos(pacman);
+
+        inky.getBlinkyPos(blinky);
+
         Thread thread = new Thread(pacman);
-        Thread ghostThread = new Thread(ghost);
+        Thread blinkyThread = new Thread(blinky);
+        Thread pinkyThread = new Thread(pinky);
+        Thread inkyThread = new Thread(inky);
+        Thread clydeThread = new Thread(clyde);
+
         thread.start();
-        ghostThread.start();
+        blinkyThread.start();
+        pinkyThread.start();
+        inkyThread.start();
+        clydeThread.start();
+
         checkCollisions();
-        checkGhostCollision();
+
+        checkPacmanCollisionWithGhost(blinky);
+        checkPacmanCollisionWithGhost(pinky);
+        checkPacmanCollisionWithGhost(inky);
+        checkPacmanCollisionWithGhost(clyde);
+
+        checkGhostCollisions(blinky);
+        checkGhostCollisions(pinky);
+        checkGhostCollisions(inky);
+        checkGhostCollisions(clyde);
+
         eat();
         repaint();
     }

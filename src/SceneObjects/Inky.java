@@ -8,10 +8,10 @@ public class Inky extends Ghost{
     private int blinkyY;
 
     public Inky(int new_x, int new_y) {
-        ghostImages[0] = new ImageIcon("src/images/iInky_left.gif").getImage();
-        ghostImages[1] = new ImageIcon("src/images/iInky_up.gif").getImage();
-        ghostImages[2] = new ImageIcon("src/images/iInky_right.gif").getImage();
-        ghostImages[3] = new ImageIcon("src/images/iInky_down.gif").getImage();
+        ghostImages[0] = new ImageIcon("src/images/Inky_left.gif").getImage();
+        ghostImages[1] = new ImageIcon("src/images/Inky_up.gif").getImage();
+        ghostImages[2] = new ImageIcon("src/images/Inky_right.gif").getImage();
+        ghostImages[3] = new ImageIcon("src/images/Inky_down.gif").getImage();
         image = ghostImages[0];
         width = image.getWidth(null);
         height = image.getHeight(null);
