@@ -16,10 +16,10 @@ public class PacmanObject extends SceneObject implements Runnable {
     private Image[] pacmanImages = new Image[4];
     public PacmanObject(int new_x, int new_y) {
 //        uploadImage("src/images/right3_16.png");
-        pacmanImages[0] = new ImageIcon("src/images/left3_16.png").getImage();
-        pacmanImages[1] = new ImageIcon("src/images/up3_16.png").getImage();
-        pacmanImages[2] = new ImageIcon("src/images/right3_16.png").getImage();
-        pacmanImages[3] = new ImageIcon("src/images/down3_16.png").getImage();
+        pacmanImages[0] = new ImageIcon("src/images/left.gif").getImage();
+        pacmanImages[1] = new ImageIcon("src/images/up.gif").getImage();
+        pacmanImages[2] = new ImageIcon("src/images/right.gif").getImage();
+        pacmanImages[3] = new ImageIcon("src/images/down.gif").getImage();
         image = pacmanImages[0];
         width = image.getWidth(null);
         height = image.getHeight(null);
