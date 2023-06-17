@@ -21,6 +21,7 @@ public class MazePanel extends JPanel implements ActionListener {
     private Blinky blinky;
     private Pinky pinky;
     private Inky inky;
+    private Clyde clyde;
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
     private int points = 0;
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -34,6 +35,7 @@ public class MazePanel extends JPanel implements ActionListener {
         blinky = new Blinky(11,11);
         pinky = new Pinky(13,11);
         inky = new Inky(14,11);
+        clyde = new Clyde(12, 11);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -59,6 +61,7 @@ public class MazePanel extends JPanel implements ActionListener {
         blinky.show(graphics, this);
         pinky.show(graphics, this);
         inky.show(graphics, this);
+        clyde.show(graphics, this);
 
         Toolkit.getDefaultToolkit().sync();
     }
@@ -182,22 +185,34 @@ public class MazePanel extends JPanel implements ActionListener {
         blinky.getPacmanPos(pacman);
         pinky.getPacmanPos(pacman);
         inky.getPacmanPos(pacman);
+        clyde.getPacmanPos(pacman);
+
         inky.getBlinkyPos(blinky);
+
         Thread thread = new Thread(pacman);
         Thread blinkyThread = new Thread(blinky);
         Thread pinkyThread = new Thread(pinky);
         Thread inkyThread = new Thread(inky);
+        Thread clydeThread = new Thread(clyde);
+
         thread.start();
         blinkyThread.start();
         pinkyThread.start();
         inkyThread.start();
+        clydeThread.start();
+
         checkCollisions();
+
         checkPacmanCollisionWithGhost(blinky);
         checkPacmanCollisionWithGhost(pinky);
         checkPacmanCollisionWithGhost(inky);
+        checkPacmanCollisionWithGhost(clyde);
+
         checkGhostCollisions(blinky);
         checkGhostCollisions(pinky);
         checkGhostCollisions(inky);
+        checkGhostCollisions(clyde);
+
         eat();
         repaint();
     }
