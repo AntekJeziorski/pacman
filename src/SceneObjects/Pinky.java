@@ -16,5 +16,27 @@ public class Pinky extends Ghost{
         setRect();
     }
 
-    public void getPacmanPos(PacmanObject pacman){}
+    public void getPacmanPos(PacmanObject pacman){
+        int pacmanDirection = pacman.getCurrentDirection();
+        int currentPacmanX = pacman.getInfo().get("X")/pacman.getInfo().get("Width");
+        int currentPacmanY = pacman.getInfo().get("Y")/pacman.getInfo().get("Height");
+        switch (pacmanDirection){
+            case 0:
+                pacmanX = currentPacmanX - 2;
+                pacmanY = currentPacmanY;
+                break;
+            case 1:
+                pacmanX = currentPacmanX - 2;
+                pacmanY = currentPacmanY - 2;
+                break;
+            case 2:
+                pacmanX = currentPacmanX + 2;
+                pacmanY = currentPacmanY;
+                break;
+            case 3:
+                pacmanX = currentPacmanX;
+                pacmanY = currentPacmanY + 2;
+                break;
+        }
+    }
 }
