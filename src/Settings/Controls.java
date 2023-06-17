@@ -33,7 +33,7 @@ public class Controls extends KeyAdapter {
 
     public int getDirection() {
         int newDirection = direction;
-        direction = -1;
+//        direction = -1;
         return newDirection;
     }
 }

@@ -1,4 +1,4 @@
-package threads;
+package Threads;
 
 public class PooledThread extends Thread
 {
