@@ -39,7 +39,7 @@ public class PacmanObject extends SceneObject implements Runnable {
 //            lastDirection = currentDirection;
         }
 
-        System.out.println(newDirection + ", " + currentDirection + ", " + lastDirection);
+//        System.out.println(newDirection + ", " + currentDirection + ", " + lastDirection);
         if(newDirection != -1 && newDirection != currentDirection && !collision[newDirection]) {
             if(abs(newDirection - currentDirection)%2 == 0)
                 currentDirection = newDirection;

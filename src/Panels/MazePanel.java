@@ -9,10 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Time;
 
 public class MazePanel extends JPanel implements ActionListener {
     private final MazeGenerator mazeGenerator;
     private final PacmanObject pacman;
+
+    private final Ghost ghost;
     private final Timer timer;
     private KeyAdapter pacmanKeyAdapter;
 
@@ -23,6 +26,7 @@ public class MazePanel extends JPanel implements ActionListener {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14,26);
         timer = new Timer(50, this);
+        ghost = new Ghost(10,26);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -48,7 +52,7 @@ public class MazePanel extends JPanel implements ActionListener {
     {
         mazeGenerator.showMaze(graphics, this);
         pacman.show(graphics, this);
-
+        ghost.show(graphics, this);
         Toolkit.getDefaultToolkit().sync();
 
     }
@@ -154,6 +158,13 @@ public class MazePanel extends JPanel implements ActionListener {
         }
     }
 
+    public void checkGhostCollision() {
+        System.out.println(ghost.getRect());
+        if (pacman.getRect().intersects(ghost.getRect())) {
+
+            timer.stop();
+        }
+    }
 
     @Override
     public void paintComponent(Graphics graphics)
@@ -164,9 +175,13 @@ public class MazePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        ghost.getPacmanPos(pacman);
         Thread thread = new Thread(pacman);
+        Thread ghostThread = new Thread(ghost);
         thread.start();
+        ghostThread.start();
         checkCollisions();
+        checkGhostCollision();
         eat();
         repaint();
     }
