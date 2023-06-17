@@ -31,9 +31,9 @@ public class MazePanel extends JPanel implements ActionListener {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14,23);
         timer = new Timer(50, this);
-        blinky = new Blinky(11,23);
-//        pinky = new Pinky(13,23);
-//        inky = new Inky(14,23);
+        blinky = new Blinky(11,11);
+        pinky = new Pinky(13,11);
+        inky = new Inky(14,11);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -57,8 +57,8 @@ public class MazePanel extends JPanel implements ActionListener {
         mazeGenerator.showMaze(graphics, this);
         pacman.show(graphics, this);
         blinky.show(graphics, this);
-//        pinky.show(graphics, this);
-//        inky.show(graphics, this);
+        pinky.show(graphics, this);
+        inky.show(graphics, this);
 
         Toolkit.getDefaultToolkit().sync();
     }
@@ -167,7 +167,7 @@ public class MazePanel extends JPanel implements ActionListener {
         }
     }
     public void checkPacmanCollisionWithGhost(Ghost ghost) {
-        if (ghost.getRect().intersects(ghost.getRect())) {
+        if (pacman.getRect().intersects(ghost.getRect())) {
             timer.stop();
         }
     }
@@ -180,24 +180,24 @@ public class MazePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         blinky.getPacmanPos(pacman);
-//        pinky.getPacmanPos(pacman);
-//        inky.getPacmanPos(pacman);
-//        inky.getBlinkyPos(blinky);
+        pinky.getPacmanPos(pacman);
+        inky.getPacmanPos(pacman);
+        inky.getBlinkyPos(blinky);
         Thread thread = new Thread(pacman);
         Thread blinkyThread = new Thread(blinky);
-//        Thread pinkyThread = new Thread(pinky);
-//        Thread inkyThread = new Thread(inky);
+        Thread pinkyThread = new Thread(pinky);
+        Thread inkyThread = new Thread(inky);
         thread.start();
         blinkyThread.start();
-//        pinkyThread.start();
-//        inkyThread.start();
+        pinkyThread.start();
+        inkyThread.start();
         checkCollisions();
         checkPacmanCollisionWithGhost(blinky);
-//        checkPacmanCollisionWithGhost(pinky);
-//        checkPacmanCollisionWithGhost(inky);
+        checkPacmanCollisionWithGhost(pinky);
+        checkPacmanCollisionWithGhost(inky);
         checkGhostCollisions(blinky);
-//        checkGhostCollisions(pinky);
-//        checkGhostCollisions(inky);
+        checkGhostCollisions(pinky);
+        checkGhostCollisions(inky);
         eat();
         repaint();
     }
