@@ -108,11 +108,18 @@ public class NewPlayerWindow extends JPanel implements ActionListener {
         constraints.gridy = 4;
         add(BackButton, constraints);
     }
-
     @Override
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == BackButton){ Pacman.openMainWindow(); }
-        if (e.getSource() == PlayButton){ Pacman.openGameWindow(); }
+        if (e.getSource() == PlayButton){
+            if (NickName.getText().length() == 0){
+                ErrorLabel.setVisible(true);
+                ErrorLabel.setText("Nickname is too short!");
+            }
+            else{
+                Pacman.openGameWindow();
+            }
+        }
     }
 }

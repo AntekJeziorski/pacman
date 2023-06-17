@@ -88,6 +88,5 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
         if (e.getSource() == BackButton){
             Pacman.openMainWindow();
         }
-
     }
 }
