@@ -4,11 +4,11 @@ import javax.swing.*;
 
 public class Blinky extends Ghost{
     public Blinky(int new_x, int new_y) {
-        ghostImages[0] = new ImageIcon("src/images/ghost_test.png").getImage();
-        ghostImages[1] = new ImageIcon("src/images/ghost_test.png").getImage();
-        ghostImages[2] = new ImageIcon("src/images/ghost_test.png").getImage();
-        ghostImages[3] = new ImageIcon("src/images/ghost_test.png").getImage();
-        image = new ImageIcon("src/images/ghost_test.png").getImage();
+        ghostImages[0] = new ImageIcon("src/images/Blinky_left.gif").getImage();
+        ghostImages[1] = new ImageIcon("src/images/Blinky_up.gif").getImage();
+        ghostImages[2] = new ImageIcon("src/images/Blinky_right.gif").getImage();
+        ghostImages[3] = new ImageIcon("src/images/Blinky_down.gif").getImage();
+        image = ghostImages[0];
         width = image.getWidth(null);
         height = image.getHeight(null);
         x = new_x * width;
@@ -36,6 +36,8 @@ public class Blinky extends Ghost{
             case 3:
                 pacmanX = currentPacmanX;
                 pacmanY = currentPacmanY + 1;
+                break;
+            default:
                 break;
         }
     }
