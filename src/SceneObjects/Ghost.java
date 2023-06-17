@@ -74,6 +74,7 @@ public class Ghost extends SceneObject implements Runnable {
             default:
                 break;
         }
+        switchImage(direction);
     }
 
     public void getPacmanPos(PacmanObject pacman){}
@@ -81,4 +82,7 @@ public class Ghost extends SceneObject implements Runnable {
         rectangle = new Rectangle(x-1,y-1,width+2,height+2);
     }
     public void setCollision(boolean[] coll) {collision = coll;}
+    private void switchImage(int direction) {
+        image = ghostImages[direction];
+    }
 }
