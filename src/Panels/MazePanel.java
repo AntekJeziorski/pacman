@@ -9,12 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.Time;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class MazePanel extends JPanel implements ActionListener {
     private final MazeGenerator mazeGenerator;
     private final PacmanObject pacman;
+
+    private final Ghost ghost;
     private final Timer timer;
     private KeyAdapter pacmanKeyAdapter;
 
@@ -28,6 +31,7 @@ public class MazePanel extends JPanel implements ActionListener {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14,23);
         timer = new Timer(50, this);
+        ghost = new Blinky(10,26);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -50,6 +54,7 @@ public class MazePanel extends JPanel implements ActionListener {
     {
         mazeGenerator.showMaze(graphics, this);
         pacman.show(graphics, this);
+        ghost.show(graphics, this);
         Toolkit.getDefaultToolkit().sync();
     }
     public int getPoints(){
@@ -130,6 +135,14 @@ public class MazePanel extends JPanel implements ActionListener {
             }
         }
     }
+    public void checkGhostCollision() {
+        System.out.println(ghost.getRect());
+        if (pacman.getRect().intersects(ghost.getRect())) {
+
+            timer.stop();
+        }
+    }
+
     @Override
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
@@ -137,9 +150,13 @@ public class MazePanel extends JPanel implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        ghost.getPacmanPos(pacman);
         Thread thread = new Thread(pacman);
+        Thread ghostThread = new Thread(ghost);
         thread.start();
+        ghostThread.start();
         checkCollisions();
+        checkGhostCollision();
         eat();
         repaint();
     }
