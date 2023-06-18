@@ -3,10 +3,18 @@ package Settings;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * @brief Represents controls object
+ */
 public class Controls extends KeyAdapter {
 
+    /** @brief Currently set direction */
     private int direction = -1;
 
+    /**
+     * @brief Overrides keyPressed method from {@link KeyAdapter} interface
+     * @param event the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent event)
     {
@@ -20,6 +28,10 @@ public class Controls extends KeyAdapter {
         }
     }
 
+    /**
+     * Gets current direction
+     * @return returns direction
+     */
     public int getDirection() {
         return direction;
     }
