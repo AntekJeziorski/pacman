@@ -10,7 +10,7 @@ import java.util.Hashtable;
 /**
  * @brief Represents scene object
  */
-public class SceneObject extends Rectangle {
+public class SceneObject {
     /** @brief Object x coordinates */
     protected int x;
     /** @brief Object y coordinates */

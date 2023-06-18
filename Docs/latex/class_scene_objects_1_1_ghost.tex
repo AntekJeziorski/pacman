@@ -1,0 +1,143 @@
+\hypertarget{class_scene_objects_1_1_ghost}{}\doxysection{Scene\+Objects.\+Ghost Class Reference}
+\label{class_scene_objects_1_1_ghost}\index{SceneObjects.Ghost@{SceneObjects.Ghost}}
+
+
+Represents ghost object.  
+
+
+Inheritance diagram for Scene\+Objects.\+Ghost\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.181818cm]{class_scene_objects_1_1_ghost}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_a385135715024871cd58620dada939289}\label{class_scene_objects_1_1_ghost_a385135715024871cd58620dada939289}} 
+{\bfseries Ghost} ()
+\begin{DoxyCompactList}\small\item\em Non-\/parametric ghost object constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_objects_1_1_ghost_ae926236283bf496613661d6ec6423d1d}{run}} ()
+\begin{DoxyCompactList}\small\item\em Overridden run() method from {\ttfamily \mbox{\hyperlink{}{Runnable}}} interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_objects_1_1_ghost_ae11875b208a03e740e94fddcd083ecab}{get\+Pacman\+Pos}} (\mbox{\hyperlink{class_scene_objects_1_1_pacman_object}{Pacman\+Object}} pacman)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Abstract\char`\"{} method for calculating ghost destination based on pacman coordinates \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_objects_1_1_ghost_ae58561224f72ce73375455114dc26611}{set\+Collision}} (boolean\mbox{[}$\,$\mbox{]} coll)
+\begin{DoxyCompactList}\small\item\em Set local collision list based on collisions checked in {\ttfamily \mbox{\hyperlink{class_panels_1_1_maze_panel}{Panels.\+Maze\+Panel}}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_scene_objects_1_1_scene_object}{Scene\+Objects.\+Scene\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_scene_object_a2e8175649e22a0aaad547054d3808994}\label{class_scene_objects_1_1_scene_object_a2e8175649e22a0aaad547054d3808994}} 
+{\bfseries Scene\+Object} ()
+\begin{DoxyCompactList}\small\item\em Non-\/parametric scene object constructor. \end{DoxyCompactList}\item 
+Dictionary$<$ String, Integer $>$ \mbox{\hyperlink{class_scene_objects_1_1_scene_object_aca966366b1617ae94cfb088657480a80}{get\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Returns basic information about scene object. \end{DoxyCompactList}\item 
+Rectangle \mbox{\hyperlink{class_scene_objects_1_1_scene_object_a339fce65abab50eab8aef2f08d5f509c}{get\+Rect}} ()
+\begin{DoxyCompactList}\small\item\em Gets scene object\textquotesingle{}s rectangle object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_scene_objects_1_1_scene_object_aa34e398685dbfafb9f92011f85ed72e7}{show}} (Graphics graph, \mbox{\hyperlink{class_panels_1_1_maze_panel}{Maze\+Panel}} maze)
+\begin{DoxyCompactList}\small\item\em Shows object on {\ttfamily \mbox{\hyperlink{}{Maze\+Panel}}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_ae9f1e01a8807160e0c30f17200516fb6}\label{class_scene_objects_1_1_ghost_ae9f1e01a8807160e0c30f17200516fb6}} 
+void {\bfseries set\+Rect} ()
+\begin{DoxyCompactList}\small\item\em Set rectangle for collision detection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_scene_objects_1_1_scene_object}{Scene\+Objects.\+Scene\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_scene_objects_1_1_scene_object_a46cba06b91440a45c4bc963191442d60}{upload\+Image}} (String image\+Path)
+\begin{DoxyCompactList}\small\item\em Uploads image file to object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_a0688354344980c4aa370dcc9625d41f6}\label{class_scene_objects_1_1_ghost_a0688354344980c4aa370dcc9625d41f6}} 
+int {\bfseries pacmanX}
+\begin{DoxyCompactList}\small\item\em Pacman x coordinate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_a436d3a639fc4251ec34c7c2de70612c5}\label{class_scene_objects_1_1_ghost_a436d3a639fc4251ec34c7c2de70612c5}} 
+int {\bfseries pacmanY}
+\begin{DoxyCompactList}\small\item\em Pacman y coordinate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_a31eed0ff7ffe896c72f1b132951c2fd3}\label{class_scene_objects_1_1_ghost_a31eed0ff7ffe896c72f1b132951c2fd3}} 
+int {\bfseries direction} = 0
+\begin{DoxyCompactList}\small\item\em Ghost direction \mbox{[}0 -\/ left, 1 -\/ up, 2 -\/ right, 3 -\/ down\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_aba72a42749965a83ab55b00b4ed1979c}\label{class_scene_objects_1_1_ghost_aba72a42749965a83ab55b00b4ed1979c}} 
+boolean\mbox{[}$\,$\mbox{]} {\bfseries collision}
+\begin{DoxyCompactList}\small\item\em List of collisions by direction. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_ad9be07129a7598b189b47365445e3a78}\label{class_scene_objects_1_1_ghost_ad9be07129a7598b189b47365445e3a78}} 
+Image\mbox{[}$\,$\mbox{]} {\bfseries ghost\+Images} = new Image\mbox{[}4\mbox{]}
+\begin{DoxyCompactList}\small\item\em List of images for each direction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_scene_objects_1_1_scene_object}{Scene\+Objects.\+Scene\+Object}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_scene_object_a5e49e85906846197d1807083e90ef788}\label{class_scene_objects_1_1_scene_object_a5e49e85906846197d1807083e90ef788}} 
+int {\bfseries x}
+\begin{DoxyCompactList}\small\item\em Object x coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_scene_object_acf004df3b1268aa0aed5a6a79ca202f0}\label{class_scene_objects_1_1_scene_object_acf004df3b1268aa0aed5a6a79ca202f0}} 
+int {\bfseries y}
+\begin{DoxyCompactList}\small\item\em Object y coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_scene_object_addd4dcd268f9c2272be6a0ef3299400c}\label{class_scene_objects_1_1_scene_object_addd4dcd268f9c2272be6a0ef3299400c}} 
+int {\bfseries width}
+\begin{DoxyCompactList}\small\item\em Object width. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_scene_object_a9f730e533579b5ac40ab8cd54ddfdb23}\label{class_scene_objects_1_1_scene_object_a9f730e533579b5ac40ab8cd54ddfdb23}} 
+int {\bfseries height}
+\begin{DoxyCompactList}\small\item\em Object height ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_scene_object_a875cff041de63acd624b503c5014ae09}\label{class_scene_objects_1_1_scene_object_a875cff041de63acd624b503c5014ae09}} 
+Image {\bfseries image}
+\begin{DoxyCompactList}\small\item\em Object\textquotesingle{}s image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_scene_objects_1_1_scene_object_a8f01e25f2cce4299e1819eebadce8a5c}\label{class_scene_objects_1_1_scene_object_a8f01e25f2cce4299e1819eebadce8a5c}} 
+Rectangle {\bfseries rectangle}
+\begin{DoxyCompactList}\small\item\em Object\textquotesingle{}s rectangle representation in coordinate system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents ghost object. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_ae11875b208a03e740e94fddcd083ecab}\label{class_scene_objects_1_1_ghost_ae11875b208a03e740e94fddcd083ecab}} 
+\index{SceneObjects.Ghost@{SceneObjects.Ghost}!getPacmanPos@{getPacmanPos}}
+\index{getPacmanPos@{getPacmanPos}!SceneObjects.Ghost@{SceneObjects.Ghost}}
+\doxysubsubsection{\texorpdfstring{getPacmanPos()}{getPacmanPos()}}
+{\footnotesize\ttfamily void Scene\+Objects.\+Ghost.\+get\+Pacman\+Pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene_objects_1_1_pacman_object}{Pacman\+Object}}}]{pacman }\end{DoxyParamCaption})}
+
+
+
+\char`\"{}\+Abstract\char`\"{} method for calculating ghost destination based on pacman coordinates 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pacman} & pacman object for which coordinates are calculated \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_scene_objects_1_1_blinky_a47b778aaece0fcce37334a8f9da9f0eb}{Scene\+Objects.\+Blinky}}, \mbox{\hyperlink{class_scene_objects_1_1_clyde_a5b110b0488d0239bda9e535a8bcfb992}{Scene\+Objects.\+Clyde}}, \mbox{\hyperlink{class_scene_objects_1_1_inky_a2c3d2f242c822084f1e3b5068280bbc7}{Scene\+Objects.\+Inky}}, and \mbox{\hyperlink{class_scene_objects_1_1_pinky_aed03c94547a8e3a2203e1f8d7cb58c33}{Scene\+Objects.\+Pinky}}.
+
+\mbox{\Hypertarget{class_scene_objects_1_1_ghost_ae926236283bf496613661d6ec6423d1d}\label{class_scene_objects_1_1_ghost_ae926236283bf496613661d6ec6423d1d}} 
+\index{SceneObjects.Ghost@{SceneObjects.Ghost}!run@{run}}
+\index{run@{run}!SceneObjects.Ghost@{SceneObjects.Ghost}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Scene\+Objects.\+Ghost.\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Overridden run() method from {\ttfamily \mbox{\hyperlink{}{Runnable}}} interface. 
+
+Is responsible for ghost movement depending on destination coordinates on {\ttfamily \mbox{\hyperlink{class_panels_1_1_maze_panel}{Panels.\+Maze\+Panel}}} \mbox{\Hypertarget{class_scene_objects_1_1_ghost_ae58561224f72ce73375455114dc26611}\label{class_scene_objects_1_1_ghost_ae58561224f72ce73375455114dc26611}} 
+\index{SceneObjects.Ghost@{SceneObjects.Ghost}!setCollision@{setCollision}}
+\index{setCollision@{setCollision}!SceneObjects.Ghost@{SceneObjects.Ghost}}
+\doxysubsubsection{\texorpdfstring{setCollision()}{setCollision()}}
+{\footnotesize\ttfamily void Scene\+Objects.\+Ghost.\+set\+Collision (\begin{DoxyParamCaption}\item[{boolean\mbox{[}$\,$\mbox{]}}]{coll }\end{DoxyParamCaption})}
+
+
+
+Set local collision list based on collisions checked in {\ttfamily \mbox{\hyperlink{class_panels_1_1_maze_panel}{Panels.\+Maze\+Panel}}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coll} & list of collision directions \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Acer/\+Documents/java/pacman/src/\+Scene\+Objects/Ghost.\+java\end{DoxyCompactItemize}
