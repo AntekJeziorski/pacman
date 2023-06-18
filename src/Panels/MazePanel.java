@@ -169,7 +169,7 @@ public class MazePanel extends JPanel implements ActionListener {
         }
 
         System.out.println(eatenDots);
-        if (eatenDots == 2) {
+        if (eatenDots == 240) {
             timer.stop();
             eatenDots = 0;
             loadMaze();
