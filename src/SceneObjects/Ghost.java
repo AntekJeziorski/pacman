@@ -12,12 +12,16 @@ public class Ghost extends SceneObject implements Runnable {
 
     /** @brief Pacman x coordinate */
     protected int pacmanX;
+
     /** @brief Pacman y coordinate */
     protected int pacmanY;
+
     /** @brief Ghost direction [0 - left, 1 - up, 2 - right, 3 - down] */
     protected int direction = 0;
+
     /** @brief List of collisions by direction*/
     protected boolean [] collision;
+
     /** @brief List of images for each direction */
     protected Image[] ghostImages = new Image[4];
 

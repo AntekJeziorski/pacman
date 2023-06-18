@@ -1,40 +1,27 @@
 package GameWindow;
 
+import Utils.FontUtils;
+import Utils.ImageUtils;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
 public class AboutWindow extends JPanel implements ActionListener {
-    private ImageIcon BigPacMan;
-    private final JButton BackButton = new JButton("Back");
-
-    private Font PixelFont;
+    private final JButton backButton = new JButton("Back");
+    private final Image bigPacMan = ImageUtils.createImage("src/images/pacman128.png");
+    private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
     public AboutWindow() {
         setLayout(new GridBagLayout());
-        setBackground(new Color(0, 0, 0));
+        setBackground(Color.BLACK);
         initialize();
     }
 
-    private void readImage(){
-        ImageIcon pacManIcon = new ImageIcon("src/images/big-pacman.png");
-        Image image = pacManIcon.getImage();
-        BigPacMan = new ImageIcon(image.getScaledInstance(50, 50, Image.SCALE_SMOOTH));
-    }
-
-    private void readFonts(){
-        try {
-            Font pixelFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/emulogic.ttf"));
-            PixelFont = pixelFont.deriveFont(16f);
-        } catch (FontFormatException | IOException e) {e.printStackTrace();}
-    }
     private void initialize() {
-        readImage();
-        readFonts();
         GridBagConstraints constraints = new GridBagConstraints();
+
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10, 0, 10, 0);
 
@@ -45,7 +32,7 @@ public class AboutWindow extends JPanel implements ActionListener {
         Title.setFocusable(false);
         Title.setBackground(Color.BLACK);
         Title.setForeground(Color.YELLOW);
-        Title.setFont(PixelFont.deriveFont(36f));
+        Title.setFont(pixelFont.deriveFont(36f));
         Title.setText(aboutTitle);
         Title.setBorder(new LineBorder(Color.BLACK));
 
@@ -55,21 +42,25 @@ public class AboutWindow extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.CENTER;
         add(Title, constraints);
 
-        String aboutText = "Pac-Man, the iconic arcade game, has captivated players for decades with its simple" +
-                "yet addictive gameplay. Released in 1980, Pac-Manintroduced the world to a hungry, yellow " +
-                "character navigating through a maze, devouring dots and evading colorful ghosts. " +
-                "This application was developed as a project for .Net Java platform course.\n" +
-                "\nDeveloped by:\n"+
-                "Antoni Jeziorski,\n    259254@student.pwr.edu.pl\n" +
-                "Szymon Sobczak,\n    259275@student.pwr.edu.pl\n" +
-                "Jedrzej Szymczyk,\n    254898@student.pwr.edu.pl";
+        String aboutText = """
+                Pac-Man, the iconic arcade game, has captivated players for decades with its simpleyet addictive
+                gameplay. Released in 1980, Pac-Man introduced the world to a hungry, yellow character navigating
+                through a maze, devouring dots and evading ghosts. This application was developed as a project for .Net Java platform course.
+                
+                Developed by:
+                Antoni Jeziorski,
+                    259254@student.pwr.edu.pl
+                Szymon Sobczak,
+                    259275@student.pwr.edu.pl
+                Jedrzej Szymczyk,
+                    254898@student.pwr.edu.pl""";
         JEditorPane AboutText = new JEditorPane();
         AboutText.setPreferredSize(new Dimension(400,400));
         AboutText.setEditable(false);
         AboutText.setFocusable(false);
         AboutText.setBackground(Color.BLACK);
         AboutText.setForeground(Color.YELLOW);
-        AboutText.setFont(PixelFont.deriveFont(12f));
+        AboutText.setFont(pixelFont.deriveFont(12f));
         AboutText.setText(aboutText);
         AboutText.setPreferredSize(new Dimension(400, 300));
         AboutText.setBorder(new LineBorder(Color.BLACK));
@@ -80,16 +71,17 @@ public class AboutWindow extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.CENTER;
         add(AboutText, constraints);
 
-        BackButton.setPreferredSize(new Dimension(250,60));
-        BackButton.setBackground(new Color(255, 255, 0));
-        BackButton.setFocusable(false);
-        BackButton.addActionListener(this);
-        BackButton.setFont(PixelFont);
+        backButton.setPreferredSize(new Dimension(250,60));
+        backButton.setBackground(new Color(255, 255, 0));
+        backButton.setFocusable(false);
+        backButton.addActionListener(this);
+        backButton.setFont(pixelFont.deriveFont(16f));
         constraints.gridx = 0;
         constraints.gridy = 2;
-        add(BackButton, constraints);
+        add(backButton, constraints);
 
-        JLabel gifLabel = new JLabel(BigPacMan);
+        ImageIcon bigPacManScaled = new ImageIcon(bigPacMan.getScaledInstance(50, 50, Image.SCALE_SMOOTH));
+        JLabel gifLabel = new JLabel(bigPacManScaled);
         gifLabel.setPreferredSize(new Dimension(50,50));
         constraints.anchor = GridBagConstraints.BASELINE;
         constraints.fill = GridBagConstraints.BASELINE;
@@ -100,6 +92,6 @@ public class AboutWindow extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == BackButton){ Pacman.openMainWindow(); }
+        if (e.getSource() == backButton){ Pacman.openMainWindow(); }
     }
 }

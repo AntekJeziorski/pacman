@@ -20,7 +20,7 @@ public class MainWindow extends JPanel implements ActionListener {
 
     public MainWindow() {
         setLayout(new GridBagLayout());
-        setBackground(new Color(0, 0, 0));
+        setBackground(Color.BLACK);
         initialize();
     }
 
@@ -33,11 +33,12 @@ public class MainWindow extends JPanel implements ActionListener {
         } catch (FontFormatException | IOException e) {e.printStackTrace();}
     }
     private void initialize() {
-        readFonts();
-
         GridBagConstraints constraints = new GridBagConstraints();
+
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10, 0, 10, 0);
+
+        readFonts();
 
         JLabel title = new JLabel("PaCMaN");
         title.setBounds(0, 0, 100, 40);
@@ -58,7 +59,8 @@ public class MainWindow extends JPanel implements ActionListener {
         NewGameButton.setBackground(new Color(255, 255, 0));
         NewGameButton.setFocusable(false);
         NewGameButton.addActionListener(this);
-        NewGameButton.setFont(ButtonFont);
+        NewGameButton.setFont(ButtonFont.deriveFont(16f));
+
         constraints.gridx = 0;
         constraints.gridy = 2;
         add(NewGameButton, constraints);
@@ -68,6 +70,7 @@ public class MainWindow extends JPanel implements ActionListener {
         LeaderButton.setFocusable(false);
         LeaderButton.addActionListener(this);
         LeaderButton.setFont(ButtonFont.deriveFont(14f));
+
         constraints.gridx = 0;
         constraints.gridy = 3;
         add(LeaderButton, constraints);
@@ -76,7 +79,8 @@ public class MainWindow extends JPanel implements ActionListener {
         AboutButton.setBackground(new Color(255, 255, 0));
         AboutButton.setFocusable(false);
         AboutButton.addActionListener(this);
-        AboutButton.setFont(ButtonFont);
+        AboutButton.setFont(ButtonFont.deriveFont(16f));
+
         constraints.gridx = 0;
         constraints.gridy = 4;
         add(AboutButton, constraints);
@@ -85,13 +89,15 @@ public class MainWindow extends JPanel implements ActionListener {
         ExitButton.setBackground(new Color(255, 255, 0));
         ExitButton.setFocusable(false);
         ExitButton.addActionListener(this);
-        ExitButton.setFont(ButtonFont);
+        ExitButton.setFont(ButtonFont.deriveFont(16f));
+
         constraints.gridx = 0;
         constraints.gridy = 5;
         add(ExitButton, constraints);
 
         BottomLabel.setForeground(Color.GRAY);
         BottomLabel.setFont(ButtonFont.deriveFont(8f));
+
         constraints.gridx = 0;
         constraints.gridy = 6;
         constraints.anchor = GridBagConstraints.CENTER;

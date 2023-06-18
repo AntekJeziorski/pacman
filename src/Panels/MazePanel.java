@@ -61,7 +61,7 @@ public class MazePanel extends JPanel implements ActionListener {
         timer = new Timer(40, this);
         loadMaze();
         setPreferredSize(new Dimension(448, 496));
-        setBackground(Color.black);
+        setBackground(Color.BLACK);
         setLayout(null);
     }
 

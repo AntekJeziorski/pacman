@@ -1,42 +1,35 @@
 package GameWindow;
 
+import Utils.FontUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
 public class GameOverWindow extends JPanel implements ActionListener {
-    private final JButton BackButton = new JButton("Back");
+    private final JButton backButton = new JButton("Back");
     private final long points;
-    private Font PixelFont;
+    private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
     public GameOverWindow(long earnedPoints) {
         points = earnedPoints;
         setLayout(new GridBagLayout());
-        setBackground(new Color(0, 0, 0));
+        setBackground(Color.BLACK);
         initialize();
     }
 
-    private void readFonts(){
-        try {
-            Font pixelFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/emulogic.ttf"));
-            PixelFont = pixelFont.deriveFont(16f);
-        } catch (FontFormatException | IOException e) {e.printStackTrace();}
-    }
     private void initialize() {
-        readFonts();
         GridBagConstraints constraints = new GridBagConstraints();
+
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(20, 0, 20, 0);
 
-
         JLabel Title = new JLabel( "Game Over");
-
         Title.setFocusable(false);
         Title.setBackground(Color.BLACK);
         Title.setForeground(Color.YELLOW);
-        Title.setFont(PixelFont.deriveFont(36f));
+        Title.setFont(pixelFont.deriveFont(36f));
+
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.anchor = GridBagConstraints.CENTER;
@@ -47,7 +40,7 @@ public class GameOverWindow extends JPanel implements ActionListener {
         InfoText.setFocusable(false);
         InfoText.setBackground(Color.BLACK);
         InfoText.setForeground(Color.YELLOW);
-        InfoText.setFont(PixelFont.deriveFont(16f));
+        InfoText.setFont(pixelFont.deriveFont(16f));
 
         constraints.gridx = 0;
         constraints.gridy = 1;
@@ -59,7 +52,7 @@ public class GameOverWindow extends JPanel implements ActionListener {
         Points.setFocusable(false);
         Points.setBackground(Color.BLACK);
         Points.setForeground(Color.YELLOW);
-        Points.setFont(PixelFont.deriveFont(16f));
+        Points.setFont(pixelFont.deriveFont(16f));
 
         constraints.gridx = 0;
         constraints.gridy = 2;
@@ -67,19 +60,21 @@ public class GameOverWindow extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.CENTER;
         add(Points, constraints);
 
-        BackButton.setPreferredSize(new Dimension(250,60));
-        BackButton.setBackground(new Color(255, 255, 0));
-        BackButton.setFocusable(false);
-        BackButton.addActionListener(this);
-        BackButton.setFont(PixelFont);
+        backButton.setPreferredSize(new Dimension(250,60));
+        backButton.setBackground(new Color(255, 255, 0));
+        backButton.setFocusable(false);
+        backButton.addActionListener(this);
+        backButton.setFont(pixelFont.deriveFont(16f));
+
         constraints.gridx = 0;
         constraints.gridy = 3;
-        add(BackButton, constraints);
+        add(backButton, constraints);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        if (e.getSource() == BackButton){ Pacman.openMainWindow(); }
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == backButton){
+            Pacman.openMainWindow();
+        }
     }
 }
