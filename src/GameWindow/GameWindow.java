@@ -108,7 +108,6 @@ public class GameWindow extends JPanel {
         gbcNested.fill = GridBagConstraints.CENTER;
         nestedPanel.add(Lives, gbcNested);
 
-
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.WEST;

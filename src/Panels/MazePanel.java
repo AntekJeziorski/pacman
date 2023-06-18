@@ -23,44 +23,30 @@ public class MazePanel extends JPanel implements ActionListener {
     private int eatenDots = 0;
     private long score = 0;
 
-   
+
     private Blinky blinky;
     private Pinky pinky;
     private Inky inky;
     private Clyde clyde;
 
     private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
 
     public MazePanel() {
-
+        timer = new Timer(40, this);
         loadMaze();
         setPreferredSize(new Dimension(448, 496));
         setBackground(Color.black);
         setLayout(null);
     }
 
-        
-        
-    private void drawObjects(Graphics graphics)
-    {
-        mazeGenerator.showMaze(graphics, this);
-        pacman.show(graphics, this);
-        blinky.show(graphics, this);
-        pinky.show(graphics, this);
-        inky.show(graphics, this);
-        clyde.show(graphics, this);
-
-        Toolkit.getDefaultToolkit().sync();
+    public void initStartAdapter() {
+        addKeyListener(pacmanKeyAdapter);
     }
-  
-    public int getPoints(){
-        return points;
-    }
-
-    private int calculateElementIndex(){
+    private int calculateElementIndex() {
         int width = 28;
         int pacmanPosX = pacman.getInfo().get("X") / pacman.getInfo().get("Width");
         int pacmanPosY = pacman.getInfo().get("Y") / pacman.getInfo().get("Height");
@@ -75,83 +61,74 @@ public class MazePanel extends JPanel implements ActionListener {
             }
         }
 
-        return (pacmanPosY+yOffset)*width+(pacmanPosX+xOffset);
+        return (pacmanPosY + yOffset) * width + (pacmanPosX + xOffset);
     }
+
     public void checkCollisions() {
         int width = 28;
         int pacmanPosX = pacman.getInfo().get("X") / pacman.getInfo().get("Width");
         int pacmanPosY = pacman.getInfo().get("Y") / pacman.getInfo().get("Height");
         SceneObject[] blocks = new SceneObject[4];
-        boolean [] out = new boolean[4];
+        boolean[] out = new boolean[4];
 
-        blocks[0] = mazeGenerator.getWalls().get((pacmanPosY)*width+(pacmanPosX-1));
-        blocks[1] = mazeGenerator.getWalls().get((pacmanPosY-1)*width+(pacmanPosX));
-        blocks[2] = mazeGenerator.getWalls().get((pacmanPosY)*width+(pacmanPosX+1));
-        blocks[3] = mazeGenerator.getWalls().get((pacmanPosY+1)*width+(pacmanPosX));
+        blocks[0] = mazeGenerator.getWalls().get((pacmanPosY) * width + (pacmanPosX - 1));
+        blocks[1] = mazeGenerator.getWalls().get((pacmanPosY - 1) * width + (pacmanPosX));
+        blocks[2] = mazeGenerator.getWalls().get((pacmanPosY) * width + (pacmanPosX + 1));
+        blocks[3] = mazeGenerator.getWalls().get((pacmanPosY + 1) * width + (pacmanPosX));
 
         for (int i = 0; i < blocks.length; i++) {
-            if(blocks[i] instanceof Wall) {
+            if (blocks[i] instanceof Wall) {
                 if (pacman.getRect().intersects(blocks[i].getRect())) {
                     out[i] = true;
                 }
-            }
-            else
+            } else
                 out[i] = false;
         }
         pacman.setCollision(out);
 
     }
 
-    public void checkGhostCollisions(Ghost ghost)
-    {
+    public void checkGhostCollisions(Ghost ghost) {
         int width = 28;
-        int ghostPosX = ghost.getInfo().get("X")/ghost.getInfo().get("Width");
-        int ghostPosY = ghost.getInfo().get("Y")/ghost.getInfo().get("Height");
-        int xOffset = 0;
-        int yOffset = 0;
+        int ghostPosX = ghost.getInfo().get("X") / ghost.getInfo().get("Width");
+        int ghostPosY = ghost.getInfo().get("Y") / ghost.getInfo().get("Height");
         SceneObject[] blocks = new SceneObject[4];
-        boolean [] out = new boolean[4];
+        boolean[] out = new boolean[4];
 
-        blocks[0] = mazeGenerator.getWalls().get((ghostPosY)*width+(ghostPosX-1));
-        blocks[1] = mazeGenerator.getWalls().get((ghostPosY-1)*width+(ghostPosX));
-        blocks[2] = mazeGenerator.getWalls().get((ghostPosY)*width+(ghostPosX+1));
-        blocks[3] = mazeGenerator.getWalls().get((ghostPosY+1)*width+(ghostPosX));
+        blocks[0] = mazeGenerator.getWalls().get((ghostPosY) * width + (ghostPosX - 1));
+        blocks[1] = mazeGenerator.getWalls().get((ghostPosY - 1) * width + (ghostPosX));
+        blocks[2] = mazeGenerator.getWalls().get((ghostPosY) * width + (ghostPosX + 1));
+        blocks[3] = mazeGenerator.getWalls().get((ghostPosY + 1) * width + (ghostPosX));
 
         for (int i = 0; i < blocks.length; i++) {
-            if(blocks[i] instanceof Wall) {
+            if (blocks[i] instanceof Wall) {
                 if (ghost.getRect().intersects(blocks[i].getRect())) {
                     out[i] = true;
                 }
-            }
-            else
+            } else
                 out[i] = false;
         }
         ghost.setCollision(out);
     }
 
-    private void checkGhostCollision() {
-        if (pacman.getRect().intersects(ghost.getRect())) {
-            timer.stop();
-            int oldLivesNumber = lives;
-            lives--;
-            pcs.firePropertyChange("Lives", oldLivesNumber, lives);
-            loadMaze();
-        }
-    }
     private void drawObjects(Graphics graphics) {
         mazeGenerator.showMaze(graphics, this);
         pacman.show(graphics, this);
-        ghost.show(graphics, this);
+        blinky.show(graphics, this);
+        pinky.show(graphics, this);
+        inky.show(graphics, this);
+        clyde.show(graphics, this);
         Toolkit.getDefaultToolkit().sync();
     }
-    private void loadMaze(){
+
+    private void loadMaze() {
         mazeGenerator = new MazeGenerator();
-        pacman = new PacmanObject(14,23);
-        timer = new Timer(50, this);
-        blinky = new Blinky(11,11);
-        pinky = new Pinky(13,11);
-        inky = new Inky(14,11);
-        clyde = new Clyde(12, 11);
+        pacman = new PacmanObject(14, 23);
+
+        blinky = new Blinky(12, 11);
+        pinky = new Pinky(14, 11);
+        inky = new Inky(15, 11);
+        clyde = new Clyde(13, 11);
         pacmanKeyAdapter = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -166,23 +143,22 @@ public class MazePanel extends JPanel implements ActionListener {
         addKeyListener(pacman.getKeyAdapter());
         initStartAdapter();
         setFocusable(true);
-
-      
     }
+
     private void collectDots() {
         int elementIndex = calculateElementIndex();
         SceneObject block = mazeGenerator.getDots().get(elementIndex);
 
-        if(block instanceof Apple) {
+        if (block instanceof Apple) {
             if (pacman.getRect().intersects(block.getRect())) {
                 long oldPoints = score;
                 score += 50;
-                pcs.firePropertyChange("Points", oldPoints,  score);
+                pcs.firePropertyChange("Points", oldPoints, score);
                 mazeGenerator.deleteDot(elementIndex, block.getInfo().get("X"), block.getInfo().get("Y"));
             }
         }
 
-        if(block instanceof Dot) {
+        if (block instanceof Dot) {
             if (pacman.getRect().intersects(block.getRect())) {
                 long oldPoints = score;
                 eatenDots++;
@@ -192,62 +168,78 @@ public class MazePanel extends JPanel implements ActionListener {
             }
         }
 
-
-        if (eatenDots == 240){
-            eatenDots = 0;
-    }
-    public void checkPacmanCollisionWithGhost(Ghost ghost) {
-        if (pacman.getRect().intersects(ghost.getRect())) {
+        System.out.println(eatenDots);
+        if (eatenDots == 2) {
             timer.stop();
+            eatenDots = 0;
             loadMaze();
         }
     }
 
-    public void initStartAdapter() {
-        addKeyListener(pacmanKeyAdapter);
-    }
+        public void checkPacmanCollisionWithGhost (Ghost ghost){
+            if (pacman.getRect().intersects(ghost.getRect())) {
+                timer.stop();
+                eatenDots = 0;
+                int oldLivesNumber = lives;
+                lives--;
+                pcs.firePropertyChange("Lives", oldLivesNumber, lives);
+                loadMaze();
+            }
+        }
 
-    @Override
-    public void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
-        drawObjects(graphics);
-    }
+        @Override
+        public void paintComponent (Graphics graphics){
+            super.paintComponent(graphics);
+            drawObjects(graphics);
+        }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        blinky.getPacmanPos(pacman);
-        pinky.getPacmanPos(pacman);
-        inky.getPacmanPos(pacman);
-        clyde.getPacmanPos(pacman);
+        @Override
+        public void actionPerformed (ActionEvent e){
+            blinky.getPacmanPos(pacman);
+            pinky.getPacmanPos(pacman);
+            inky.getPacmanPos(pacman);
+            clyde.getPacmanPos(pacman);
 
-        inky.getBlinkyPos(blinky);
+            inky.getBlinkyPos(blinky);
 
-        Thread thread = new Thread(pacman);
-        Thread blinkyThread = new Thread(blinky);
-        Thread pinkyThread = new Thread(pinky);
-        Thread inkyThread = new Thread(inky);
-        Thread clydeThread = new Thread(clyde);
+            Thread thread = new Thread(pacman);
+            Thread blinkyThread = new Thread(blinky);
+            Thread pinkyThread = new Thread(pinky);
+            Thread inkyThread = new Thread(inky);
+            Thread clydeThread = new Thread(clyde);
 
-        thread.start();
-        blinkyThread.start();
-        pinkyThread.start();
-        inkyThread.start();
-        clydeThread.start();
+            checkCollisions();
 
-        checkCollisions();
+            checkPacmanCollisionWithGhost(blinky);
+            checkPacmanCollisionWithGhost(pinky);
+            checkPacmanCollisionWithGhost(inky);
+            checkPacmanCollisionWithGhost(clyde);
 
-        checkPacmanCollisionWithGhost(blinky);
-        checkPacmanCollisionWithGhost(pinky);
-        checkPacmanCollisionWithGhost(inky);
-        checkPacmanCollisionWithGhost(clyde);
+            checkGhostCollisions(blinky);
+            checkGhostCollisions(pinky);
+            checkGhostCollisions(inky);
+            checkGhostCollisions(clyde);
 
-        checkGhostCollisions(blinky);
-        checkGhostCollisions(pinky);
-        checkGhostCollisions(inky);
-        checkGhostCollisions(clyde);
+            thread.start();
+            blinkyThread.start();
+            pinkyThread.start();
+            inkyThread.start();
+            clydeThread.start();
 
-        collectDots();
+            try {
+                clydeThread.join();
+                inkyThread.join();
+                pinkyThread.join();
+                blinkyThread.join();
+                thread.join();
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
 
-        repaint();
-    }
+
+            collectDots();
+
+            repaint();
+        }
+
 }

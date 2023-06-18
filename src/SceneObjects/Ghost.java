@@ -12,19 +12,14 @@ public class Ghost extends SceneObject implements Runnable {
     protected int pacmanY;
     protected int direction = 0;
     protected boolean [] collision;
-
     protected Image[] ghostImages = new Image[4];
-
-    public Ghost() {
-    }
+    public Ghost() { }
 
     @Override
     public void run() {
         int path = 1000000000;
         int minPath = 1000000000;
         int nextDirection = direction;
-        System.out.println(pacmanX);
-        System.out.println(pacmanY);
         for(int i = 0; i < 4; i++) {
             if(!(abs(i - direction)%2 == 0 && i != direction) && collision[i] == false && x % 16 == 0 && y % 16 == 0) {
                 switch (i){
@@ -51,37 +46,36 @@ public class Ghost extends SceneObject implements Runnable {
                 }
             }
         }
-        System.out.println(minPath);
-        System.out.println();
         direction = nextDirection;
-        switch (direction){
+        switch (direction) {
             case 0:
-                x = x-4;
+                x -= 2;
                 setRect();
                 break;
             case 1:
-                y = y-4;
+                y -= 2;
                 setRect();
                 break;
             case 2:
-                x = x+4;
+                x += 2;
                 setRect();
                 break;
             case 3:
-                y = y+4;
+                y += 2;
                 setRect();
                 break;
             default:
                 break;
         }
+
         switchImage(direction);
-        if(x/width == -1 && y/height == 14)
-        {
+
+        if(x/width == -1 && y/height == 14) {
             x = 27*width;
             setRect();
         }
-        if(x/width == 28 && y/height == 14)
-        {
+
+        if(x/width == 28 && y/height == 14) {
             x = 0;
             setRect();
         }
