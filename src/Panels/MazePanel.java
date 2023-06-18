@@ -15,8 +15,7 @@ public class MazePanel extends JPanel implements ActionListener {
 
     private MazeGenerator mazeGenerator;
     private PacmanObject pacman;
-    private Ghost ghost;
-    private Timer timer;
+    private final Timer timer;
     private KeyAdapter pacmanKeyAdapter;
     private int lives = 3;
 
@@ -29,7 +28,7 @@ public class MazePanel extends JPanel implements ActionListener {
     private Inky inky;
     private Clyde clyde;
 
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
