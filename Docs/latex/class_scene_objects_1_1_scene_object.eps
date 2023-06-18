@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 72.072075
+%%BoundingBox: 0 0 500 54.054054
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 6.937500 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 9.250000 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 4 def
+/rows 3 def
 /cols 6 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -174,7 +174,6 @@
 boxfont setfont
 1 boundaspect scale
 (SceneObjects.SceneObject) cw
-(Rectangle) cw
 (SceneObjects.Air) cw
 (SceneObjects.Apple) cw
 (SceneObjects.Dot) cw
@@ -197,7 +196,6 @@ boundx scalefactor div boundy scalefactor div scale
 % ----- classes -----
 
  (SceneObjects.SceneObject) 2.500000 2.000000 box
- (Rectangle) 2.500000 3.000000 box
  (SceneObjects.Air) 0.000000 1.000000 box
  (SceneObjects.Apple) 1.000000 1.000000 box
  (SceneObjects.Dot) 2.000000 1.000000 box
@@ -211,10 +209,6 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- relations -----
 
-solid
-0 2.500000 2.000000 out
-solid
-1 2.500000 3.000000 in
 solid
 1 2.500000 1.250000 out
 solid
