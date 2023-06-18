@@ -23,7 +23,7 @@ public class Pacman extends JFrame {
         pack();
         setLocationRelativeTo(null);
 
-        File iconFile = new File("src/images/right3.png");
+        File iconFile = new File("src/images/pacman128.png");
         if (iconFile.exists()) {
             ImageIcon icon = new ImageIcon(iconFile.getAbsolutePath());
             setIconImage(icon.getImage());
