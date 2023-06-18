@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pacmanobject_0',['PacmanObject',['../class_scene_objects_1_1_pacman_object.html#a82e9643da489664b733e7b0cdaa9745e',1,'SceneObjects::PacmanObject']]],
-  ['pinky_1',['Pinky',['../class_scene_objects_1_1_pinky.html#a6626fd92202e750f23b2e05d0e0124a4',1,'SceneObjects::Pinky']]]
+  ['mazegenerator_0',['MazeGenerator',['../class_scene_objects_1_1_maze_generator.html#aeff2ca26d0b0b7a6bafd81c8e0237518',1,'SceneObjects::MazeGenerator']]],
+  ['mazepanel_1',['MazePanel',['../class_panels_1_1_maze_panel.html#a58cf00d9065a8d0a0c0a2df8dcbc2d3d',1,'Panels::MazePanel']]]
 ];

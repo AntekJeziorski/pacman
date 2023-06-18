@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['x_0',['x',['../class_scene_objects_1_1_scene_object.html#a5e49e85906846197d1807083e90ef788',1,'SceneObjects::SceneObject']]]
+  ['wall_0',['Wall',['../class_scene_objects_1_1_wall.html',1,'SceneObjects.Wall'],['../class_scene_objects_1_1_wall.html#afc26dbaf12eb37740b1b739f8df51f02',1,'SceneObjects.Wall.Wall()']]],
+  ['width_1',['width',['../class_scene_objects_1_1_scene_object.html#addd4dcd268f9c2272be6a0ef3299400c',1,'SceneObjects::SceneObject']]]
 ];

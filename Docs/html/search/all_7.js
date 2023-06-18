@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['leaderboardwindow_0',['LeaderBoardWindow',['../class_game_window_1_1_leader_board_window.html',1,'GameWindow']]]
+  ['keypressed_0',['keyPressed',['../class_settings_1_1_controls.html#a496c5cad2f2dc297b30139293ddc3bfd',1,'Settings::Controls']]]
 ];

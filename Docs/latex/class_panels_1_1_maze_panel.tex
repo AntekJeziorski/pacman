@@ -1,5 +1,10 @@
 \hypertarget{class_panels_1_1_maze_panel}{}\doxysection{Panels.\+Maze\+Panel Class Reference}
 \label{class_panels_1_1_maze_panel}\index{Panels.MazePanel@{Panels.MazePanel}}
+
+
+Represents maze panel object.  
+
+
 Inheritance diagram for Panels.\+Maze\+Panel\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,27 +14,118 @@ Inheritance diagram for Panels.\+Maze\+Panel\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_panels_1_1_maze_panel_a2a4f2c6265f3e7e3774a56c80edc944c}\label{class_panels_1_1_maze_panel_a2a4f2c6265f3e7e3774a56c80edc944c}} 
-void {\bfseries add\+Property\+Change\+Listener} (Property\+Change\+Listener listener)
-\item 
+void \mbox{\hyperlink{class_panels_1_1_maze_panel_a2a4f2c6265f3e7e3774a56c80edc944c}{add\+Property\+Change\+Listener}} (Property\+Change\+Listener listener)
+\begin{DoxyCompactList}\small\item\em Adds listener to pcs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_panels_1_1_maze_panel_a58cf00d9065a8d0a0c0a2df8dcbc2d3d}{Maze\+Panel}} ()
+\begin{DoxyCompactList}\small\item\em Non-\/parametric Maze\+Panel constructor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_panels_1_1_maze_panel_ad3749bb541bfdecb188e49673d656ceb}\label{class_panels_1_1_maze_panel_ad3749bb541bfdecb188e49673d656ceb}} 
 void {\bfseries init\+Start\+Adapter} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Initializes pacman key listener. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_panels_1_1_maze_panel_ae61d27be891a3105b693acc4de8881f5}\label{class_panels_1_1_maze_panel_ae61d27be891a3105b693acc4de8881f5}} 
 void {\bfseries check\+Collisions} ()
-\item 
-\mbox{\Hypertarget{class_panels_1_1_maze_panel_a82d54101753c51e733055916d91f6364}\label{class_panels_1_1_maze_panel_a82d54101753c51e733055916d91f6364}} 
-void {\bfseries check\+Ghost\+Collisions} (\mbox{\hyperlink{class_scene_objects_1_1_ghost}{Ghost}} ghost)
-\item 
-\mbox{\Hypertarget{class_panels_1_1_maze_panel_a6174028c1be1a8851042c9467559fde1}\label{class_panels_1_1_maze_panel_a6174028c1be1a8851042c9467559fde1}} 
-void {\bfseries check\+Pacman\+Collision\+With\+Ghost} (\mbox{\hyperlink{class_scene_objects_1_1_ghost}{Ghost}} ghost)
-\item 
-\mbox{\Hypertarget{class_panels_1_1_maze_panel_a929e8315ca57594b29348771847fc2b2}\label{class_panels_1_1_maze_panel_a929e8315ca57594b29348771847fc2b2}} 
-void {\bfseries paint\+Component} (Graphics graphics)
-\item 
+\begin{DoxyCompactList}\small\item\em Checks pacman collisions with walls. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_panels_1_1_maze_panel_a82d54101753c51e733055916d91f6364}{check\+Ghost\+Collisions}} (\mbox{\hyperlink{class_scene_objects_1_1_ghost}{Ghost}} ghost)
+\begin{DoxyCompactList}\small\item\em Checks ghost\textquotesingle{}s collision with walls. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_panels_1_1_maze_panel_a6174028c1be1a8851042c9467559fde1}{check\+Pacman\+Collision\+With\+Ghost}} (\mbox{\hyperlink{class_scene_objects_1_1_ghost}{Ghost}} ghost)
+\begin{DoxyCompactList}\small\item\em Checks ghost\textquotesingle{}s collision with pacman. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_panels_1_1_maze_panel_a929e8315ca57594b29348771847fc2b2}{paint\+Component}} (Graphics graphics)
+\begin{DoxyCompactList}\small\item\em Overrides {\ttfamily \mbox{\hyperlink{}{JComponent\textquotesingle{}s}}} method paint\+Component. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_panels_1_1_maze_panel_a4ae111a12155321da51bf6d2feb6c484}{action\+Performed}} (Action\+Event e)
+\begin{DoxyCompactList}\small\item\em Overrides action\+Performed method, acts as game loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents maze panel object. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_panels_1_1_maze_panel_a58cf00d9065a8d0a0c0a2df8dcbc2d3d}\label{class_panels_1_1_maze_panel_a58cf00d9065a8d0a0c0a2df8dcbc2d3d}} 
+\index{Panels.MazePanel@{Panels.MazePanel}!MazePanel@{MazePanel}}
+\index{MazePanel@{MazePanel}!Panels.MazePanel@{Panels.MazePanel}}
+\doxysubsubsection{\texorpdfstring{MazePanel()}{MazePanel()}}
+{\footnotesize\ttfamily Panels.\+Maze\+Panel.\+Maze\+Panel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Non-\/parametric Maze\+Panel constructor. 
+
+Initializes game timer and all drawable objects 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_panels_1_1_maze_panel_a4ae111a12155321da51bf6d2feb6c484}\label{class_panels_1_1_maze_panel_a4ae111a12155321da51bf6d2feb6c484}} 
-void {\bfseries action\+Performed} (Action\+Event e)
-\end{DoxyCompactItemize}
+\index{Panels.MazePanel@{Panels.MazePanel}!actionPerformed@{actionPerformed}}
+\index{actionPerformed@{actionPerformed}!Panels.MazePanel@{Panels.MazePanel}}
+\doxysubsubsection{\texorpdfstring{actionPerformed()}{actionPerformed()}}
+{\footnotesize\ttfamily void Panels.\+Maze\+Panel.\+action\+Performed (\begin{DoxyParamCaption}\item[{Action\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Overrides action\+Performed method, acts as game loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & the event to be processed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_panels_1_1_maze_panel_a2a4f2c6265f3e7e3774a56c80edc944c}\label{class_panels_1_1_maze_panel_a2a4f2c6265f3e7e3774a56c80edc944c}} 
+\index{Panels.MazePanel@{Panels.MazePanel}!addPropertyChangeListener@{addPropertyChangeListener}}
+\index{addPropertyChangeListener@{addPropertyChangeListener}!Panels.MazePanel@{Panels.MazePanel}}
+\doxysubsubsection{\texorpdfstring{addPropertyChangeListener()}{addPropertyChangeListener()}}
+{\footnotesize\ttfamily void Panels.\+Maze\+Panel.\+add\+Property\+Change\+Listener (\begin{DoxyParamCaption}\item[{Property\+Change\+Listener}]{listener }\end{DoxyParamCaption})}
+
+
+
+Adds listener to pcs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & the Property\+Change\+Listener to be added \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_panels_1_1_maze_panel_a82d54101753c51e733055916d91f6364}\label{class_panels_1_1_maze_panel_a82d54101753c51e733055916d91f6364}} 
+\index{Panels.MazePanel@{Panels.MazePanel}!checkGhostCollisions@{checkGhostCollisions}}
+\index{checkGhostCollisions@{checkGhostCollisions}!Panels.MazePanel@{Panels.MazePanel}}
+\doxysubsubsection{\texorpdfstring{checkGhostCollisions()}{checkGhostCollisions()}}
+{\footnotesize\ttfamily void Panels.\+Maze\+Panel.\+check\+Ghost\+Collisions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene_objects_1_1_ghost}{Ghost}}}]{ghost }\end{DoxyParamCaption})}
+
+
+
+Checks ghost\textquotesingle{}s collision with walls. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ghost} & ghost object for collision detection \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_panels_1_1_maze_panel_a6174028c1be1a8851042c9467559fde1}\label{class_panels_1_1_maze_panel_a6174028c1be1a8851042c9467559fde1}} 
+\index{Panels.MazePanel@{Panels.MazePanel}!checkPacmanCollisionWithGhost@{checkPacmanCollisionWithGhost}}
+\index{checkPacmanCollisionWithGhost@{checkPacmanCollisionWithGhost}!Panels.MazePanel@{Panels.MazePanel}}
+\doxysubsubsection{\texorpdfstring{checkPacmanCollisionWithGhost()}{checkPacmanCollisionWithGhost()}}
+{\footnotesize\ttfamily void Panels.\+Maze\+Panel.\+check\+Pacman\+Collision\+With\+Ghost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_scene_objects_1_1_ghost}{Ghost}}}]{ghost }\end{DoxyParamCaption})}
+
+
+
+Checks ghost\textquotesingle{}s collision with pacman. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ghost} & ghost object for collision detection \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_panels_1_1_maze_panel_a929e8315ca57594b29348771847fc2b2}\label{class_panels_1_1_maze_panel_a929e8315ca57594b29348771847fc2b2}} 
+\index{Panels.MazePanel@{Panels.MazePanel}!paintComponent@{paintComponent}}
+\index{paintComponent@{paintComponent}!Panels.MazePanel@{Panels.MazePanel}}
+\doxysubsubsection{\texorpdfstring{paintComponent()}{paintComponent()}}
+{\footnotesize\ttfamily void Panels.\+Maze\+Panel.\+paint\+Component (\begin{DoxyParamCaption}\item[{Graphics}]{graphics }\end{DoxyParamCaption})}
+
+
+
+Overrides {\ttfamily \mbox{\hyperlink{}{JComponent\textquotesingle{}s}}} method paint\+Component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em graphics} & the {\ttfamily Graphics} object to protect \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

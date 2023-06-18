@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['rectangle_0',['rectangle',['../class_scene_objects_1_1_scene_object.html#a8f01e25f2cce4299e1819eebadce8a5c',1,'SceneObjects::SceneObject']]],
-  ['run_1',['run',['../class_scene_objects_1_1_ghost.html#ae926236283bf496613661d6ec6423d1d',1,'SceneObjects.Ghost.run()'],['../class_scene_objects_1_1_pacman_object.html#a520809a50d0eada00991d4482e467f73',1,'SceneObjects.PacmanObject.run()']]]
+  ['pacman_0',['Pacman',['../class_game_window_1_1_pacman.html',1,'GameWindow']]],
+  ['pacmanobject_1',['PacmanObject',['../class_scene_objects_1_1_pacman_object.html#a82e9643da489664b733e7b0cdaa9745e',1,'SceneObjects.PacmanObject.PacmanObject()'],['../class_scene_objects_1_1_pacman_object.html',1,'SceneObjects.PacmanObject']]],
+  ['pacmanx_2',['pacmanX',['../class_scene_objects_1_1_ghost.html#a0688354344980c4aa370dcc9625d41f6',1,'SceneObjects::Ghost']]],
+  ['pacmany_3',['pacmanY',['../class_scene_objects_1_1_ghost.html#a436d3a639fc4251ec34c7c2de70612c5',1,'SceneObjects::Ghost']]],
+  ['paintcomponent_4',['paintComponent',['../class_panels_1_1_maze_panel.html#a929e8315ca57594b29348771847fc2b2',1,'Panels::MazePanel']]],
+  ['pinky_5',['Pinky',['../class_scene_objects_1_1_pinky.html#a6626fd92202e750f23b2e05d0e0124a4',1,'SceneObjects.Pinky.Pinky()'],['../class_scene_objects_1_1_pinky.html',1,'SceneObjects.Pinky']]]
 ];
