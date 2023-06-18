@@ -2,7 +2,16 @@ package SceneObjects;
 
 import javax.swing.*;
 
+/**
+ * Represents red ghost
+ *
+ */
 public class Blinky extends Ghost{
+    /**
+     * Blinky object parametric constructor
+     * @param new_x initial x coordinate of the created object
+     * @param new_y initial y coordinate of the created object
+     */
     public Blinky(int new_x, int new_y) {
         ghostImages[0] = new ImageIcon("src/images/Blinky_left.gif").getImage();
         ghostImages[1] = new ImageIcon("src/images/Blinky_up.gif").getImage();
@@ -16,6 +25,10 @@ public class Blinky extends Ghost{
         setRect();
     }
 
+    /**
+     * Calculates destination coordinates for Blinky
+     * @param pacman pacman object for which coordinates are calculated
+     */
     public void getPacmanPos(PacmanObject pacman) {
         int pacmanDirection = pacman.getCurrentDirection();
         int currentPacmanX = pacman.getInfo().get("X")/pacman.getInfo().get("Width");

@@ -8,13 +8,24 @@ import static java.lang.Math.pow;
 
 public class Ghost extends SceneObject implements Runnable {
 
+    /** Pacman x coordinate */
     protected int pacmanX;
+    /** Pacman y coordinate */
     protected int pacmanY;
+    /** Ghost direction [0 - left, 1 - up, 2 - right, 3 - down] */
     protected int direction = 0;
+    /** List of collisions by direction*/
     protected boolean [] collision;
+    /** List of images for each direction */
     protected Image[] ghostImages = new Image[4];
+
+    /** Non-parametric ghost class constructor */
     public Ghost() { }
 
+    /** @brief Overriden run() method from {@link Runnable} interface
+     *
+     * Is responsible for ghost movement depending on destination coordinates on {@link Panels.MazePanel}
+     */
     @Override
     public void run() {
         int path = 1000000000;
@@ -68,7 +79,7 @@ public class Ghost extends SceneObject implements Runnable {
                 break;
         }
 
-        switchImage(direction);
+        switchImage();
 
         if(x/width == -1 && y/height == 14) {
             x = 27*width;
@@ -81,12 +92,29 @@ public class Ghost extends SceneObject implements Runnable {
         }
     }
 
+    /**
+     * "Abstract" method for calculating ghost destination based on pacman coordinates
+     * @param pacman pacman object for which coordinates are calculated
+     */
     public void getPacmanPos(PacmanObject pacman){}
+
+    /**
+     * Set rectangle for collision detection
+     */
     protected void setRect() {
         rectangle = new Rectangle(x-1,y-1,width+2,height+2);
     }
+
+    /**
+     * Set local collision list based on collisions checked in {@link Panels.MazePanel}
+     * @param coll list of collision directions
+     */
     public void setCollision(boolean[] coll) {collision = coll;}
-    private void switchImage(int direction) {
+
+    /**
+     * Select image based on current movement direction
+     */
+    private void switchImage() {
         image = ghostImages[direction];
     }
 }

@@ -10,7 +10,6 @@ import static java.lang.Math.abs;
 public class PacmanObject extends SceneObject implements Runnable {
     private final Controls controls = new Controls();
     private int currentDirection;
-    private int lastDirection;
     private boolean [] collision;
 
     private Image[] pacmanImages = new Image[4];
@@ -24,7 +23,6 @@ public class PacmanObject extends SceneObject implements Runnable {
         height = image.getHeight(null);
         x = new_x * width;
         y = new_y * height;
-//        rectangle = new Rectangle(x-1,y-1,width+2,height+2);
         setRect();
 
     }
@@ -33,9 +31,6 @@ public class PacmanObject extends SceneObject implements Runnable {
     public void run() {
         int newDirection = controls.getDirection();
 
-//        if(newDirection == -1) {
-//            newDirection = lastDirection;
-//        }
 
         if(newDirection != -1 && newDirection != currentDirection && !collision[newDirection]) {
             if(abs(newDirection - currentDirection)%2 == 0)
@@ -68,11 +63,7 @@ public class PacmanObject extends SceneObject implements Runnable {
             default:
                 break;
         }
-        switchImage(currentDirection);
-//        if(newDirection != -1 && lastDirection != newDirection)
-//            lastDirection = newDirection;
-//        else
-//            lastDirection = currentDirection;
+        switchImage();
 
         if(x/width == -1 && y/height == 14)
         {
@@ -86,8 +77,8 @@ public class PacmanObject extends SceneObject implements Runnable {
         }
     }
 
-    private void switchImage(int direction) {
-        image = pacmanImages[direction];
+    private void switchImage() {
+        image = pacmanImages[currentDirection];
     }
     private void setRect() {
         rectangle = new Rectangle(x-1,y-1,width+2,height+2);

@@ -2,7 +2,16 @@ package SceneObjects;
 
 import javax.swing.*;
 
+/**
+ * Represents pink ghost
+ *
+ */
 public class Pinky extends Ghost{
+    /**
+     * Pinky object parametric constructor
+     * @param new_x initial x coordinate of the created object
+     * @param new_y initial y coordinate of the created object
+     */
     public Pinky(int new_x, int new_y) {
         ghostImages[0] = new ImageIcon("src/images/Pinky_left.gif").getImage();
         ghostImages[1] = new ImageIcon("src/images/Pinky_up.gif").getImage();
@@ -17,6 +26,10 @@ public class Pinky extends Ghost{
         setRect();
     }
 
+    /**
+     * Calculates destination coordinates for Pinky
+     * @param pacman pacman object for which coordinates are calculated
+     */
     public void getPacmanPos(PacmanObject pacman){
         int pacmanDirection = pacman.getCurrentDirection();
         int currentPacmanX = pacman.getInfo().get("X")/pacman.getInfo().get("Width");
