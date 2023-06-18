@@ -1,7 +1,6 @@
 package GameWindow;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +9,7 @@ import java.io.IOException;
 
 public class GameOverWindow extends JPanel implements ActionListener {
     private final JButton BackButton = new JButton("Back");
-    private long points;
+    private final long points;
     private Font PixelFont;
     public GameOverWindow(long earnedPoints) {
         points = earnedPoints;

@@ -11,30 +11,52 @@ import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+/**
+ * @brief Represents maze panel object
+ */
 public class MazePanel extends JPanel implements ActionListener {
 
+    /** @brief MazeGenerator object */
     private MazeGenerator mazeGenerator;
+    /** @brief PacmanObject class object */
     private PacmanObject pacman;
-    private Ghost ghost;
-    private Timer timer;
+    /** @brief Game timer */
+    private final Timer timer;
+    /** @brief KeyAdapter for pacman player control */
     private KeyAdapter pacmanKeyAdapter;
+    /** @brief Current number of lives */
     private int lives = 3;
-
+    /** @brief Current number of eaten dots */
     private int eatenDots = 0;
+    /** @brief Current score */
     private long score = 0;
 
 
+    /** @brief Red ghost object */
     private Blinky blinky;
+    /** @brief Pink ghost object */
     private Pinky pinky;
+    /** @brief Blue ghost object */
     private Inky inky;
+    /** @brief Orange ghost object */
     private Clyde clyde;
+    /** @brief PropertyChangeSupport handler */
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-    private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
-
+    /**
+     * @brief Adds listener to pcs
+     * @param listener  the PropertyChangeListener to be added
+     *
+     */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
     }
 
+    /**
+     * @brief Non-parametric MazePanel constructor
+     *
+     * Initializes game timer and all drawable objects
+     */
     public MazePanel() {
         timer = new Timer(40, this);
         loadMaze();
@@ -43,9 +65,17 @@ public class MazePanel extends JPanel implements ActionListener {
         setLayout(null);
     }
 
+    /**
+     * @brief Initializes pacman key listener
+     */
     public void initStartAdapter() {
         addKeyListener(pacmanKeyAdapter);
     }
+
+    /**
+     * @brief Calculates index of a block in front of pacman
+     * @return index of block in front of pacman
+     */
     private int calculateElementIndex() {
         int width = 28;
         int pacmanPosX = pacman.getInfo().get("X") / pacman.getInfo().get("Width");
@@ -64,6 +94,9 @@ public class MazePanel extends JPanel implements ActionListener {
         return (pacmanPosY + yOffset) * width + (pacmanPosX + xOffset);
     }
 
+    /**
+     * @brief Checks pacman collisions with walls
+     */
     public void checkCollisions() {
         int width = 28;
         int pacmanPosX = pacman.getInfo().get("X") / pacman.getInfo().get("Width");
@@ -88,6 +121,10 @@ public class MazePanel extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * @brief Checks ghost's collision with walls
+     * @param ghost ghost object for collision detection
+     */
     public void checkGhostCollisions(Ghost ghost) {
         int width = 28;
         int ghostPosX = ghost.getInfo().get("X") / ghost.getInfo().get("Width");
@@ -111,6 +148,10 @@ public class MazePanel extends JPanel implements ActionListener {
         ghost.setCollision(out);
     }
 
+    /**
+     * @brief Draws all objects on panel
+     * @param graphics graphics handler
+     */
     private void drawObjects(Graphics graphics) {
         mazeGenerator.showMaze(graphics, this);
         pacman.show(graphics, this);
@@ -121,6 +162,9 @@ public class MazePanel extends JPanel implements ActionListener {
         Toolkit.getDefaultToolkit().sync();
     }
 
+    /**
+     * @brief Initializes all interactive objects on maze panel
+     */
     private void loadMaze() {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14, 23);
@@ -145,6 +189,9 @@ public class MazePanel extends JPanel implements ActionListener {
         setFocusable(true);
     }
 
+    /**
+     * @brief Checks collisions with dots and apples, and calculates score
+     */
     private void collectDots() {
         int elementIndex = calculateElementIndex();
         SceneObject block = mazeGenerator.getDots().get(elementIndex);
@@ -176,70 +223,82 @@ public class MazePanel extends JPanel implements ActionListener {
         }
     }
 
-        public void checkPacmanCollisionWithGhost (Ghost ghost){
-            if (pacman.getRect().intersects(ghost.getRect())) {
-                timer.stop();
-                eatenDots = 0;
-                int oldLivesNumber = lives;
-                lives--;
-                pcs.firePropertyChange("Lives", oldLivesNumber, lives);
-                loadMaze();
-            }
+    /**
+     * @brief Checks ghost's collision with pacman
+     * @param ghost ghost object for collision detection
+     */
+    public void checkPacmanCollisionWithGhost (Ghost ghost){
+        if (pacman.getRect().intersects(ghost.getRect())) {
+            timer.stop();
+            eatenDots = 0;
+            int oldLivesNumber = lives;
+            lives--;
+            pcs.firePropertyChange("Lives", oldLivesNumber, lives);
+            loadMaze();
+        }
+    }
+
+    /**
+     * @brief Overrides {@link JComponent's} method paintComponent
+     * @param graphics the <code>Graphics</code> object to protect
+     */
+    @Override
+    public void paintComponent (Graphics graphics){
+        super.paintComponent(graphics);
+        drawObjects(graphics);
+    }
+
+    /**
+     * @brief Overrides actionPerformed method, acts as game loop
+     * @param e the event to be processed
+     */
+    @Override
+    public void actionPerformed (ActionEvent e){
+        blinky.getPacmanPos(pacman);
+        pinky.getPacmanPos(pacman);
+        inky.getPacmanPos(pacman);
+        clyde.getPacmanPos(pacman);
+
+        inky.getBlinkyPos(blinky);
+
+        Thread thread = new Thread(pacman);
+        Thread blinkyThread = new Thread(blinky);
+        Thread pinkyThread = new Thread(pinky);
+        Thread inkyThread = new Thread(inky);
+        Thread clydeThread = new Thread(clyde);
+
+        checkCollisions();
+
+        checkPacmanCollisionWithGhost(blinky);
+        checkPacmanCollisionWithGhost(pinky);
+        checkPacmanCollisionWithGhost(inky);
+        checkPacmanCollisionWithGhost(clyde);
+
+        checkGhostCollisions(blinky);
+        checkGhostCollisions(pinky);
+        checkGhostCollisions(inky);
+        checkGhostCollisions(clyde);
+
+        thread.start();
+        blinkyThread.start();
+        pinkyThread.start();
+        inkyThread.start();
+        clydeThread.start();
+
+        try {
+            clydeThread.join();
+            inkyThread.join();
+            pinkyThread.join();
+            blinkyThread.join();
+            thread.join();
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
         }
 
-        @Override
-        public void paintComponent (Graphics graphics){
-            super.paintComponent(graphics);
-            drawObjects(graphics);
-        }
 
-        @Override
-        public void actionPerformed (ActionEvent e){
-            blinky.getPacmanPos(pacman);
-            pinky.getPacmanPos(pacman);
-            inky.getPacmanPos(pacman);
-            clyde.getPacmanPos(pacman);
+        collectDots();
 
-            inky.getBlinkyPos(blinky);
-
-            Thread thread = new Thread(pacman);
-            Thread blinkyThread = new Thread(blinky);
-            Thread pinkyThread = new Thread(pinky);
-            Thread inkyThread = new Thread(inky);
-            Thread clydeThread = new Thread(clyde);
-
-            checkCollisions();
-
-            checkPacmanCollisionWithGhost(blinky);
-            checkPacmanCollisionWithGhost(pinky);
-            checkPacmanCollisionWithGhost(inky);
-            checkPacmanCollisionWithGhost(clyde);
-
-            checkGhostCollisions(blinky);
-            checkGhostCollisions(pinky);
-            checkGhostCollisions(inky);
-            checkGhostCollisions(clyde);
-
-            thread.start();
-            blinkyThread.start();
-            pinkyThread.start();
-            inkyThread.start();
-            clydeThread.start();
-
-            try {
-                clydeThread.join();
-                inkyThread.join();
-                pinkyThread.join();
-                blinkyThread.join();
-                thread.join();
-            } catch (InterruptedException ex) {
-                throw new RuntimeException(ex);
-            }
-
-
-            collectDots();
-
-            repaint();
-        }
+        repaint();
+    }
 
 }

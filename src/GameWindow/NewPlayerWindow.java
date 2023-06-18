@@ -3,16 +3,13 @@ package GameWindow;
 import Utils.NickNameField;
 
 import javax.swing.*;
-import java.awt.*;
-import javax.swing.JEditorPane;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import javax.imageio.ImageIO;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.Image;
 import java.io.IOException;
 
 public class NewPlayerWindow extends JPanel implements ActionListener {
