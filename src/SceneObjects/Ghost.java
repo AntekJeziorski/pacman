@@ -1,29 +1,31 @@
 package SceneObjects;
 
-import javax.swing.*;
 import java.awt.*;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
+/**
+ * @brief Represents ghost object
+ */
 public class Ghost extends SceneObject implements Runnable {
 
-    /** Pacman x coordinate */
+    /** @brief Pacman x coordinate */
     protected int pacmanX;
-    /** Pacman y coordinate */
+    /** @brief Pacman y coordinate */
     protected int pacmanY;
-    /** Ghost direction [0 - left, 1 - up, 2 - right, 3 - down] */
+    /** @brief Ghost direction [0 - left, 1 - up, 2 - right, 3 - down] */
     protected int direction = 0;
-    /** List of collisions by direction*/
+    /** @brief List of collisions by direction*/
     protected boolean [] collision;
-    /** List of images for each direction */
+    /** @brief List of images for each direction */
     protected Image[] ghostImages = new Image[4];
 
-    /** Non-parametric ghost class constructor */
+    /** @brief Non-parametric ghost object constructor */
     public Ghost() { }
 
-    /** @brief Overriden run() method from {@link Runnable} interface
-     *
+    /** @brief Overridden run() method from {@link Runnable} interface
+     * <p>
      * Is responsible for ghost movement depending on destination coordinates on {@link Panels.MazePanel}
      */
     @Override
@@ -32,22 +34,18 @@ public class Ghost extends SceneObject implements Runnable {
         int minPath = 1000000000;
         int nextDirection = direction;
         for(int i = 0; i < 4; i++) {
-            if(!(abs(i - direction)%2 == 0 && i != direction) && collision[i] == false && x % 16 == 0 && y % 16 == 0) {
-                switch (i){
-                    case 0:
-                        path = (int) (pow(pacmanX - (x/width - 1), 2) + pow(pacmanY - y/height, 2));
-                        break;
-                    case 1:
-                        path = (int) (pow(pacmanX - x/width, 2) + pow(pacmanY - (y/height - 1), 2));
-                        break;
-                    case 2:
-                        path = (int) (pow(pacmanX - (x/width + 1), 2) + pow(pacmanY - y/height, 2));
-                        break;
-                    case 3:
-                        path = (int) (pow(pacmanX - x/width, 2) + pow(pacmanY - (y/height + 1), 2));
-                        break;
-                    default:
-                        break;
+            if(!(abs(i - direction)%2 == 0 && i != direction) && !collision[i] && x % 16 == 0 && y % 16 == 0) {
+                switch (i) {
+                    case 0 -> //noinspection IntegerDivisionInFloatingPointContext
+                            path = (int) (pow(pacmanX - (x / width - 1), 2) + pow(pacmanY - y / height, 2));
+                    case 1 -> //noinspection IntegerDivisionInFloatingPointContext
+                            path = (int) (pow(pacmanX - x / width, 2) + pow(pacmanY - (y / height - 1), 2));
+                    case 2 -> //noinspection IntegerDivisionInFloatingPointContext
+                            path = (int) (pow(pacmanX - (x / width + 1), 2) + pow(pacmanY - y / height, 2));
+                    case 3 -> //noinspection IntegerDivisionInFloatingPointContext
+                            path = (int) (pow(pacmanX - x / width, 2) + pow(pacmanY - (y / height + 1), 2));
+                    default -> {
+                    }
                 }
 
                 if(minPath > path) {
@@ -59,24 +57,24 @@ public class Ghost extends SceneObject implements Runnable {
         }
         direction = nextDirection;
         switch (direction) {
-            case 0:
+            case 0 -> {
                 x -= 2;
                 setRect();
-                break;
-            case 1:
+            }
+            case 1 -> {
                 y -= 2;
                 setRect();
-                break;
-            case 2:
+            }
+            case 2 -> {
                 x += 2;
                 setRect();
-                break;
-            case 3:
+            }
+            case 3 -> {
                 y += 2;
                 setRect();
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
 
         switchImage();
@@ -93,26 +91,26 @@ public class Ghost extends SceneObject implements Runnable {
     }
 
     /**
-     * "Abstract" method for calculating ghost destination based on pacman coordinates
+     * @brief "Abstract" method for calculating ghost destination based on pacman coordinates
      * @param pacman pacman object for which coordinates are calculated
      */
     public void getPacmanPos(PacmanObject pacman){}
 
     /**
-     * Set rectangle for collision detection
+     * @brief Set rectangle for collision detection
      */
     protected void setRect() {
         rectangle = new Rectangle(x-1,y-1,width+2,height+2);
     }
 
     /**
-     * Set local collision list based on collisions checked in {@link Panels.MazePanel}
+     * @brief Set local collision list based on collisions checked in {@link Panels.MazePanel}
      * @param coll list of collision directions
      */
     public void setCollision(boolean[] coll) {collision = coll;}
 
     /**
-     * Select image based on current movement direction
+     * @brief Select image based on current movement direction
      */
     private void switchImage() {
         image = ghostImages[direction];

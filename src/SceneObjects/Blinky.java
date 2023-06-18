@@ -3,12 +3,12 @@ package SceneObjects;
 import javax.swing.*;
 
 /**
- * Represents red ghost
+ * @brief Represents red ghost
  *
  */
 public class Blinky extends Ghost{
     /**
-     * Blinky object parametric constructor
+     * @brief Blinky object parametric constructor
      * @param new_x initial x coordinate of the created object
      * @param new_y initial y coordinate of the created object
      */
@@ -26,32 +26,32 @@ public class Blinky extends Ghost{
     }
 
     /**
-     * Calculates destination coordinates for Blinky
+     * @brief Calculates destination coordinates for Blinky
      * @param pacman pacman object for which coordinates are calculated
      */
     public void getPacmanPos(PacmanObject pacman) {
         int pacmanDirection = pacman.getCurrentDirection();
         int currentPacmanX = pacman.getInfo().get("X")/pacman.getInfo().get("Width");
         int currentPacmanY = pacman.getInfo().get("Y")/pacman.getInfo().get("Height");
-        switch (pacmanDirection){
-            case 0:
+        switch (pacmanDirection) {
+            case 0 -> {
                 pacmanX = currentPacmanX - 1;
                 pacmanY = currentPacmanY;
-                break;
-            case 1:
+            }
+            case 1 -> {
                 pacmanX = currentPacmanX - 1;
                 pacmanY = currentPacmanY - 1;
-                break;
-            case 2:
+            }
+            case 2 -> {
                 pacmanX = currentPacmanX + 1;
                 pacmanY = currentPacmanY;
-                break;
-            case 3:
+            }
+            case 3 -> {
                 pacmanX = currentPacmanX;
                 pacmanY = currentPacmanY + 1;
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
     }
 }

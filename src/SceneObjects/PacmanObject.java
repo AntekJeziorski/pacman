@@ -7,12 +7,24 @@ import java.awt.*;
 
 import static java.lang.Math.abs;
 
+/**
+ * @brief Represents pacman object
+ */
 public class PacmanObject extends SceneObject implements Runnable {
+    /** @brief Handler for pacman keyboard input */
     private final Controls controls = new Controls();
+    /** @brief Current pacman direction [0 - left, 1 - up, 2 - right, 3 - down] */
     private int currentDirection;
+    /** @brief List of collisions by direction*/
     private boolean [] collision;
+    /** @brief List of images for each direction */
+    private final Image[] pacmanImages = new Image[4];
 
-    private Image[] pacmanImages = new Image[4];
+    /**
+     * @brief Pacman object parametric constructor
+     * @param new_x initial x coordinate of the created object
+     * @param new_y initial y coordinate of the created object
+     */
     public PacmanObject(int new_x, int new_y) {
         pacmanImages[0] = new ImageIcon("src/images/left.gif").getImage();
         pacmanImages[1] = new ImageIcon("src/images/up.gif").getImage();
@@ -27,6 +39,10 @@ public class PacmanObject extends SceneObject implements Runnable {
 
     }
 
+    /** @brief Overridden run() method from {@link Runnable} interface
+     * <p>
+     * Is responsible for pacman movement depending on direction on {@link Panels.MazePanel} form player input
+     */
     @Override
     public void run() {
         int newDirection = controls.getDirection();
@@ -39,29 +55,29 @@ public class PacmanObject extends SceneObject implements Runnable {
                 currentDirection = newDirection;
         }
 
-        switch (currentDirection){
-            case 0:
-                if(!collision[0])
-                    x = x-4;
+        switch (currentDirection) {
+            case 0 -> {
+                if (!collision[0])
+                    x = x - 4;
                 setRect();
-                break;
-            case 1:
-                if(!collision[1])
-                    y = y-4;
+            }
+            case 1 -> {
+                if (!collision[1])
+                    y = y - 4;
                 setRect();
-                break;
-            case 2:
-                if(!collision[2])
-                    x = x+4;
+            }
+            case 2 -> {
+                if (!collision[2])
+                    x = x + 4;
                 setRect();
-                break;
-            case 3:
-                if(!collision[3])
-                    y = y+4;
+            }
+            case 3 -> {
+                if (!collision[3])
+                    y = y + 4;
                 setRect();
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
         switchImage();
 
@@ -77,19 +93,38 @@ public class PacmanObject extends SceneObject implements Runnable {
         }
     }
 
+    /**
+     * @brief Select image based on current movement direction
+     */
     private void switchImage() {
         image = pacmanImages[currentDirection];
     }
+
+    /**
+     * @brief Set rectangle for collision detection
+     */
     private void setRect() {
         rectangle = new Rectangle(x-1,y-1,width+2,height+2);
     }
 
+    /**
+     * @brief Gets current pacman direction
+     * @return current pacman direction
+     */
     public int getCurrentDirection()
     {
         return currentDirection;
     }
 
+    /**
+     * Gets controls handler
+     * @return control handler
+     */
     public Controls getKeyAdapter(){return controls;}
 
+    /**
+     * @brief Sets collision directions
+     * @param coll list of collision directions
+     */
     public void setCollision(boolean[] coll) {collision = coll;}
 }

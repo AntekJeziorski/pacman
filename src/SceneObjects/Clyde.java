@@ -5,12 +5,12 @@ import javax.swing.*;
 import static java.lang.Math.pow;
 
 /**
- * Represents orange ghost
+ * @brief Represents orange ghost
  *
  */
 public class Clyde extends Ghost{
     /**
-     * Clyde object parametric constructor
+     * @brief Clyde object parametric constructor
      * @param new_x initial x coordinate of the created object
      * @param new_y initial y coordinate of the created object
      */
@@ -28,33 +28,34 @@ public class Clyde extends Ghost{
     }
 
     /**
-     * Calculates destination coordinates for Clyde
+     * @brief Calculates destination coordinates for Clyde
      * @param pacman pacman object for which coordinates are calculated
      */
     public void getPacmanPos(PacmanObject pacman) {
         int pacmanDirection = pacman.getCurrentDirection();
         int currentPacmanX = pacman.getInfo().get("X")/pacman.getInfo().get("Width");
         int currentPacmanY = pacman.getInfo().get("Y")/pacman.getInfo().get("Height");
+        //noinspection IntegerDivisionInFloatingPointContext
         if(pow(currentPacmanX - x/16, 2) + pow(currentPacmanY - y/16, 2) > 64){
-            switch (pacmanDirection){
-                case 0:
+            switch (pacmanDirection) {
+                case 0 -> {
                     pacmanX = currentPacmanX - 1;
                     pacmanY = currentPacmanY;
-                    break;
-                case 1:
+                }
+                case 1 -> {
                     pacmanX = currentPacmanX - 1;
                     pacmanY = currentPacmanY - 1;
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     pacmanX = currentPacmanX + 1;
                     pacmanY = currentPacmanY;
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     pacmanX = currentPacmanX;
                     pacmanY = currentPacmanY + 1;
-                    break;
-                default:
-                    break;
+                }
+                default -> {
+                }
             }
         }
         else {

@@ -3,18 +3,18 @@ package SceneObjects;
 import javax.swing.*;
 
 /**
- * Represents blue ghost
+ * @brief Represents blue ghost
  *
  */
 public class Inky extends Ghost{
 
-    /** Blinky x coordinate */
+    /** @brief Blinky x coordinate */
     private int blinkyX;
-    /** Blinky y coordinate */
+    /** @brief Blinky y coordinate */
     private int blinkyY;
 
     /**
-     * Inky object parametric constructor
+     * @brief Inky object parametric constructor
      * @param new_x initial x coordinate of the created object
      * @param new_y initial y coordinate of the created object
      */
@@ -33,7 +33,7 @@ public class Inky extends Ghost{
     }
 
     /**
-     * Sets private fields for blinky coordinates
+     * @brief Sets private fields for blinky coordinates
      * @param blinky blinky object from which coordinates are fetched
      */
     public void getBlinkyPos(Blinky blinky) {
@@ -42,11 +42,10 @@ public class Inky extends Ghost{
     }
 
     /**
-     * Calculates destination coordinates for Inky
+     * @brief Calculates destination coordinates for Inky
      * @param pacman pacman object for which coordinates are calculated
      */
     public void getPacmanPos(PacmanObject pacman){
-        int pacmanDirection = pacman.getCurrentDirection();
         int currentPacmanX = pacman.getInfo().get("X")/pacman.getInfo().get("Width");
         int currentPacmanY = pacman.getInfo().get("Y")/pacman.getInfo().get("Height");
         pacmanX = 2 * currentPacmanX - blinkyX;
