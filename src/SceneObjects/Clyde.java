@@ -10,7 +10,7 @@ public class Clyde extends Ghost{
         ghostImages[1] = new ImageIcon("src/images/Clyde_up.gif").getImage();
         ghostImages[2] = new ImageIcon("src/images/Clyde_right.gif").getImage();
         ghostImages[3] = new ImageIcon("src/images/Clyde_down.gif").getImage();
-        image = ghostImages[0];
+        image = ghostImages[3];
         width = image.getWidth(null);
         height = image.getHeight(null);
         x = new_x * width;

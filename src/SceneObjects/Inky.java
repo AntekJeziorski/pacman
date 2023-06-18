@@ -12,7 +12,7 @@ public class Inky extends Ghost{
         ghostImages[1] = new ImageIcon("src/images/Inky_up.gif").getImage();
         ghostImages[2] = new ImageIcon("src/images/Inky_right.gif").getImage();
         ghostImages[3] = new ImageIcon("src/images/Inky_down.gif").getImage();
-        image = ghostImages[2];
+        image = ghostImages[3];
         width = image.getWidth(null);
         height = image.getHeight(null);
         direction = 2;

@@ -168,7 +168,7 @@ public class MazePanel extends JPanel implements ActionListener {
             }
         }
 
-        System.out.println(eatenDots);
+//        System.out.println(eatenDots);
         if (eatenDots == 240) {
             timer.stop();
             eatenDots = 0;

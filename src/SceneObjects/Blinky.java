@@ -8,7 +8,7 @@ public class Blinky extends Ghost{
         ghostImages[1] = new ImageIcon("src/images/Blinky_up.gif").getImage();
         ghostImages[2] = new ImageIcon("src/images/Blinky_right.gif").getImage();
         ghostImages[3] = new ImageIcon("src/images/Blinky_down.gif").getImage();
-        image = ghostImages[0];
+        image = ghostImages[3];
         width = image.getWidth(null);
         height = image.getHeight(null);
         x = new_x * width;
