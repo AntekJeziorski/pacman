@@ -17,6 +17,16 @@ public class LeaderboardManager {
     public static ArrayList<ArrayList<String>> getScoreRecords() {
         File csvFile = new File("PacManLeaderBoard.csv");
         ArrayList<ArrayList<String>> scoreRecords = new ArrayList<>();
+
+        if (!csvFile.exists()) {
+            try {
+                csvFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return scoreRecords;
+        }
+
         try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
             String line;
             while ((line = reader.readLine()) != null) {
