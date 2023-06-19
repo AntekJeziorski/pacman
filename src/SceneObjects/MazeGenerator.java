@@ -10,8 +10,14 @@ import java.util.List;
 public class MazeGenerator {
     /** @brief List of walls */
     private final List<SceneObject> walls;
+
     /** @brief List of dots and apples */
     private final List<SceneObject> dots;
+
+    /**
+     * @brief Representation of the game board
+     * Maze consisting of elements such as no passage: 0, wall: 1, point: 2 and apple: 3
+     * */
     static final int [][] map = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                     {1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1},
                     {1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1},
@@ -44,7 +50,8 @@ public class MazeGenerator {
                     {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1},
                     {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
 
-    /** @brief Non-parametric maze generator object constructor
+    /**
+     * @brief Non-parametric maze generator object constructor
      * Initializes walls and dots positions on {@link MazePanel} based on map
      */
     public MazeGenerator() {
@@ -93,7 +100,7 @@ public class MazeGenerator {
     }
 
     /**
-     * Gets list of walls
+     * @brief Gets list of walls
      * @return list of walls in maze generator object
      */
     public List<SceneObject> getWalls() {
@@ -101,7 +108,7 @@ public class MazeGenerator {
     }
 
     /**
-     * Gets list of dots
+     * @brief Gets list of dots
      * @return list of dots in maze generator object
      */
     public List<SceneObject> getDots() { return dots; }

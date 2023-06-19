@@ -7,6 +7,7 @@ public class Inky extends Ghost{
 
     /** @brief Blinky x coordinate */
     private int blinkyX;
+
     /** @brief Blinky y coordinate */
     private int blinkyY;
 
