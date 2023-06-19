@@ -10,3 +10,4 @@ Check our simple UI. You can easily start new game and your best score will be v
 
 # UML diagram
 
+![Alt text](images/class-UML-diagram.png "Game example")

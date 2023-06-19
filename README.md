@@ -8,7 +8,7 @@ The application was prepared based on JDK 18.0.2. We recommend using an IDE such
 The `/docs` directory contains the latest version of the project documentation generated using the doxygen system. 
 The docs file is `/docs/html/index.html`.
 
-## contrubutors
+## contributors
 - Antoni Jeziorski, 259254@studnet.pwr.edu.pl
 - Szymon Sobczak, 259275@student.pwr.edu.pl
 - Jędrzej Szymczyk, 254898@student.pwr.edu.pl
