@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pacman_0',['Pacman',['../index.html',1,'']]]
+  ['pacman_0',['PacMan',['../index.html',1,'']]]
 ];
