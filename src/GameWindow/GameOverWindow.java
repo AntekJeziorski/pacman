@@ -7,12 +7,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static Utils.LeaderboardManager.getBestScore;
 public class GameOverWindow extends JPanel implements ActionListener {
     private final JButton backButton = new JButton("Back");
-    private final long points;
+    private final long score;
     private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
     public GameOverWindow(long earnedPoints) {
-        points = earnedPoints;
+        score = earnedPoints;
         setLayout(new GridBagLayout());
         setBackground(Color.BLACK);
         initialize();
@@ -36,26 +37,39 @@ public class GameOverWindow extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.CENTER;
         add(Title, constraints);
 
-        JLabel InfoText = new JLabel("Your score:");
+        JLabel newRecordText = new JLabel("! New Record !");
+        newRecordText.setFocusable(false);
+        newRecordText.setBackground(Color.BLACK);
+        newRecordText.setForeground(Color.PINK);
+        newRecordText.setFont(pixelFont.deriveFont(24f));
+        newRecordText.setVisible(score >= getBestScore());
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.fill = GridBagConstraints.CENTER;
+        add(newRecordText, constraints);
+
+        JLabel InfoText = new JLabel("- Your score -");
         InfoText.setFocusable(false);
         InfoText.setBackground(Color.BLACK);
         InfoText.setForeground(Color.YELLOW);
         InfoText.setFont(pixelFont.deriveFont(16f));
 
         constraints.gridx = 0;
-        constraints.gridy = 1;
+        constraints.gridy = 2;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.CENTER;
         add(InfoText, constraints);
 
-        JLabel Points = new JLabel(String.valueOf(points));
+        JLabel Points = new JLabel(String.valueOf(score));
         Points.setFocusable(false);
         Points.setBackground(Color.BLACK);
         Points.setForeground(Color.YELLOW);
         Points.setFont(pixelFont.deriveFont(16f));
 
         constraints.gridx = 0;
-        constraints.gridy = 2;
+        constraints.gridy = 3;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.CENTER;
         add(Points, constraints);
@@ -67,7 +81,7 @@ public class GameOverWindow extends JPanel implements ActionListener {
         backButton.setFont(pixelFont.deriveFont(16f));
 
         constraints.gridx = 0;
-        constraints.gridy = 3;
+        constraints.gridy = 4;
         add(backButton, constraints);
     }
 

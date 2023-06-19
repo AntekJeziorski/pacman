@@ -6,8 +6,9 @@ import Utils.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+
+import static Utils.LeaderboardManager.getBestScore;
+import static Utils.LeaderboardManager.saveScoreRecord;
 
 public class GameWindow extends JPanel {
     private String nickname;
@@ -15,7 +16,7 @@ public class GameWindow extends JPanel {
     private int lives = 3;
     private final MazePanel mazePanel;
     private final JLabel ScoreValue = new JLabel("0");
-    private final JLabel topScoreValue = new JLabel("972500");
+    private final JLabel topScoreValue = new JLabel(String.valueOf(getBestScore()));
     private final JLabel Lives = new JLabel(String.valueOf(lives));
     private final Image pacManPicture = ImageUtils.createImage("src/images/pacman128.png");
     private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
@@ -55,7 +56,8 @@ public class GameWindow extends JPanel {
                 int currentLives = (int) evt.getNewValue();
                 lives = currentLives;
                 Lives.setText(String.valueOf(lives));
-                if (  currentLives == 0) {
+                if (currentLives == 0) {
+                    saveScoreRecord(nickname, score);
                     Pacman.openGameOverWindow(score);
                 }
             }

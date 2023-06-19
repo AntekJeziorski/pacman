@@ -1,6 +1,6 @@
 package GameWindow;
 
-import CsvReader.Csvreader;
+import Utils.LeaderboardManager;
 import Utils.FontUtils;
 
 import javax.swing.*;
@@ -9,6 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
+import static Utils.LeaderboardManager.getScoreRecords;
 
 public class LeaderBoardWindow extends JPanel implements ActionListener {
     private final JButton backButton = new JButton("Back");
@@ -20,8 +22,6 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
     }
 
     private void initialize() {
-        Csvreader csv = new Csvreader();
-
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(0, 0, 40, 0);
@@ -33,7 +33,7 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
         Title.setFocusable(false);
         Title.setBackground(Color.BLACK);
         Title.setForeground(Color.YELLOW);
-        Title.setFont(pixelFont.deriveFont(24f));
+        Title.setFont(pixelFont.deriveFont(28f));
         Title.setText(aboutTitle);
         Title.setBorder(new LineBorder(Color.BLACK));
         constraints.gridx = 0;
@@ -42,17 +42,21 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.CENTER;
         add(Title, constraints);
 
-        ArrayList<ArrayList<String>> leaderBoard = csv.getParsedFile();
+        ArrayList<ArrayList<String>> leaderBoard = getScoreRecords();
         DefaultListModel<String> listModel = new DefaultListModel<>();
-        int size = listModel.getSize();
-        for (int i = 0; i < leaderBoard.size(); i++) {
-            String concatenatedString = String.join(" -", leaderBoard.get(i));
-            listModel.addElement(i+1 + "." + concatenatedString);
+
+        for (int i = 0; i < 5; i++) {
+            ArrayList<String> record = leaderBoard.get(i);
+            String index = String.valueOf(i + 1);
+            String playerName = record.get(0);
+            String score = record.get(1);
+            listModel.addElement(index + ". " + playerName + " - " + score + " pts");
             listModel.addElement(" ");
         }
+
         JList<String> list = new JList<>(listModel);
         list.setCellRenderer(new CenteredCellRenderer());
-        list.setPreferredSize(new Dimension(460, 200));
+        list.setPreferredSize(new Dimension(450, 200));
         list.setBackground(new Color(255, 255, 0));
         list.setFocusable(false);
         list.setFont(pixelFont.deriveFont(13f));
@@ -73,15 +77,13 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
         add(backButton, constraints);
 
     }
-    private void getLeaderBoard(){
-
-    }
-
     private static class CenteredCellRenderer extends DefaultListCellRenderer {
         public Component getListCellRendererComponent(JList<?> list, Object value, int index,
                                                       boolean isSelected, boolean cellHasFocus) {
             super.getListCellRendererComponent(list, value, index, false, cellHasFocus);
-            setHorizontalAlignment(SwingConstants.CENTER);
+            setHorizontalAlignment(SwingConstants.LEFT);
+            setHorizontalTextPosition(SwingConstants.LEFT);
+            setPreferredSize(new Dimension(list.getWidth(), getPreferredSize().height));
             return this;
         }
     }
