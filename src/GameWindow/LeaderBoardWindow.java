@@ -53,14 +53,15 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
 
         ArrayList<ArrayList<String>> leaderBoard = getScoreRecords();
         DefaultListModel<String> listModel = new DefaultListModel<>();
-
-        for (int i = 0; i < 5; i++) {
-            ArrayList<String> record = leaderBoard.get(i);
-            String index = String.valueOf(i + 1);
-            String playerName = record.get(0);
-            String score = record.get(1);
-            listModel.addElement(index + ". " + playerName + " - " + score + " pts");
-            listModel.addElement(" ");
+        if (!leaderBoard.isEmpty()) {
+            for (int i = 0; i < Math.min(5, leaderBoard.size()); i++) {
+                ArrayList<String> record = leaderBoard.get(i);
+                String index = String.valueOf(i + 1);
+                String playerName = record.get(0);
+                String score = record.get(1);
+                listModel.addElement(index + ". " + playerName + " - " + score + " pts");
+                listModel.addElement(" ");
+            }
         }
 
         JList<String> list = new JList<>(listModel);
