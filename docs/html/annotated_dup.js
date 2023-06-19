@@ -1,15 +1,12 @@
 var annotated_dup =
 [
-    [ "CsvReader", null, [
-      [ "Csvreader", "class_csv_reader_1_1_csvreader.html", null ]
-    ] ],
     [ "GameWindow", null, [
-      [ "AboutWindow", "class_game_window_1_1_about_window.html", null ],
-      [ "GameOverWindow", "class_game_window_1_1_game_over_window.html", null ],
-      [ "GameWindow", "class_game_window_1_1_game_window.html", null ],
-      [ "LeaderBoardWindow", "class_game_window_1_1_leader_board_window.html", null ],
-      [ "MainWindow", "class_game_window_1_1_main_window.html", null ],
-      [ "NewPlayerWindow", "class_game_window_1_1_new_player_window.html", null ],
+      [ "AboutWindow", "class_game_window_1_1_about_window.html", "class_game_window_1_1_about_window" ],
+      [ "GameOverWindow", "class_game_window_1_1_game_over_window.html", "class_game_window_1_1_game_over_window" ],
+      [ "GameWindow", "class_game_window_1_1_game_window.html", "class_game_window_1_1_game_window" ],
+      [ "LeaderBoardWindow", "class_game_window_1_1_leader_board_window.html", "class_game_window_1_1_leader_board_window" ],
+      [ "MainWindow", "class_game_window_1_1_main_window.html", "class_game_window_1_1_main_window" ],
+      [ "NewPlayerWindow", "class_game_window_1_1_new_player_window.html", "class_game_window_1_1_new_player_window" ],
       [ "Pacman", "class_game_window_1_1_pacman.html", null ]
     ] ],
     [ "Panels", null, [
@@ -33,7 +30,10 @@ var annotated_dup =
       [ "Controls", "class_settings_1_1_controls.html", "class_settings_1_1_controls" ]
     ] ],
     [ "Utils", null, [
-      [ "NickNameField", "class_utils_1_1_nick_name_field.html", null ]
+      [ "FontUtils", "class_utils_1_1_font_utils.html", null ],
+      [ "ImageUtils", "class_utils_1_1_image_utils.html", null ],
+      [ "LeaderboardManager", "class_utils_1_1_leaderboard_manager.html", null ],
+      [ "NickNameField", "class_utils_1_1_nick_name_field.html", "class_utils_1_1_nick_name_field" ]
     ] ],
     [ "Main", "class_main.html", null ]
 ];

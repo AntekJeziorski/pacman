@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pacman_0',['Pacman',['../class_game_window_1_1_pacman.html',1,'GameWindow']]],
-  ['pacmanobject_1',['PacmanObject',['../class_scene_objects_1_1_pacman_object.html',1,'SceneObjects']]],
-  ['pinky_2',['Pinky',['../class_scene_objects_1_1_pinky.html',1,'SceneObjects']]]
+  ['newplayerwindow_0',['NewPlayerWindow',['../class_game_window_1_1_new_player_window.html',1,'GameWindow']]],
+  ['nicknamefield_1',['NickNameField',['../class_utils_1_1_nick_name_field.html',1,'Utils']]]
 ];

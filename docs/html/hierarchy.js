@@ -1,6 +1,7 @@
 var hierarchy =
 [
-    [ "CsvReader.Csvreader", "class_csv_reader_1_1_csvreader.html", null ],
+    [ "Utils.FontUtils", "class_utils_1_1_font_utils.html", null ],
+    [ "Utils.ImageUtils", "class_utils_1_1_image_utils.html", null ],
     [ "JFrame", null, [
       [ "GameWindow.Pacman", "class_game_window_1_1_pacman.html", null ]
     ] ],
@@ -16,6 +17,7 @@ var hierarchy =
     [ "JTextField", null, [
       [ "Utils.NickNameField", "class_utils_1_1_nick_name_field.html", null ]
     ] ],
+    [ "Utils.LeaderboardManager", "class_utils_1_1_leaderboard_manager.html", null ],
     [ "Main", "class_main.html", null ],
     [ "SceneObjects.MazeGenerator", "class_scene_objects_1_1_maze_generator.html", null ],
     [ "Runnable", null, [

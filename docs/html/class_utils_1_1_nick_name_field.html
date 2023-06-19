@@ -96,6 +96,9 @@ $(document).ready(function(){initNavTree('class_utils_1_1_nick_name_field.html',
   <div class="headertitle"><div class="title">Utils.NickNameField Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>The NickNameField class extends JTextField and provides a text field with a placeholder feature When the field does not have focus and no text is entered, it displays a placeholder text.  
+ <a href="class_utils_1_1_nick_name_field.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Utils.NickNameField:</div>
 <div class="dyncontent">
@@ -105,22 +108,138 @@ Inheritance diagram for Utils.NickNameField:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a486bd73ba001659f65ef13286f110ec2"><td class="memItemLeft" align="right" valign="top"><a id="a486bd73ba001659f65ef13286f110ec2" name="a486bd73ba001659f65ef13286f110ec2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>NickNameField</b> (String placeholder)</td></tr>
+<tr class="memitem:a486bd73ba001659f65ef13286f110ec2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utils_1_1_nick_name_field.html#a486bd73ba001659f65ef13286f110ec2">NickNameField</a> (String placeholder)</td></tr>
+<tr class="memdesc:a486bd73ba001659f65ef13286f110ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new NickNameField object with the specified placeholder text.  <br /></td></tr>
 <tr class="separator:a486bd73ba001659f65ef13286f110ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6b2d1ffd21a44e9449d6e84f514ef8f"><td class="memItemLeft" align="right" valign="top"><a id="af6b2d1ffd21a44e9449d6e84f514ef8f" name="af6b2d1ffd21a44e9449d6e84f514ef8f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>focusGained</b> (FocusEvent e)</td></tr>
+<tr class="memitem:af6b2d1ffd21a44e9449d6e84f514ef8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utils_1_1_nick_name_field.html#af6b2d1ffd21a44e9449d6e84f514ef8f">focusGained</a> (FocusEvent e)</td></tr>
+<tr class="memdesc:af6b2d1ffd21a44e9449d6e84f514ef8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overrides the focusGained method to hide the placeholder text when the field gains focus.  <br /></td></tr>
 <tr class="separator:af6b2d1ffd21a44e9449d6e84f514ef8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa85ebd191903ecec439d84a1d7529fa2"><td class="memItemLeft" align="right" valign="top"><a id="aa85ebd191903ecec439d84a1d7529fa2" name="aa85ebd191903ecec439d84a1d7529fa2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>focusLost</b> (FocusEvent e)</td></tr>
+<tr class="memitem:aa85ebd191903ecec439d84a1d7529fa2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utils_1_1_nick_name_field.html#aa85ebd191903ecec439d84a1d7529fa2">focusLost</a> (FocusEvent e)</td></tr>
+<tr class="memdesc:aa85ebd191903ecec439d84a1d7529fa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overrides the focusLost method to show the placeholder text when the field loses focus and no text is entered.  <br /></td></tr>
 <tr class="separator:aa85ebd191903ecec439d84a1d7529fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a49a5029d997d83a029ac6e52d36576eb"><td class="memItemLeft" align="right" valign="top"><a id="a49a5029d997d83a029ac6e52d36576eb" name="a49a5029d997d83a029ac6e52d36576eb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>paintComponent</b> (Graphics g)</td></tr>
+<tr class="memitem:a49a5029d997d83a029ac6e52d36576eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utils_1_1_nick_name_field.html#a49a5029d997d83a029ac6e52d36576eb">paintComponent</a> (Graphics g)</td></tr>
+<tr class="memdesc:a49a5029d997d83a029ac6e52d36576eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overrides the paintComponent method to display the placeholder text if the field is empty and the placeholder is set to be shown.  <br /></td></tr>
 <tr class="separator:a49a5029d997d83a029ac6e52d36576eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The NickNameField class extends JTextField and provides a text field with a placeholder feature When the field does not have focus and no text is entered, it displays a placeholder text. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a486bd73ba001659f65ef13286f110ec2" name="a486bd73ba001659f65ef13286f110ec2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a486bd73ba001659f65ef13286f110ec2">&#9670;&#160;</a></span>NickNameField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Utils.NickNameField.NickNameField </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>placeholder</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new NickNameField object with the specified placeholder text. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">placeholder</td><td>the placeholder text to be displayed when the field is empty and does not have focus </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af6b2d1ffd21a44e9449d6e84f514ef8f" name="af6b2d1ffd21a44e9449d6e84f514ef8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6b2d1ffd21a44e9449d6e84f514ef8f">&#9670;&#160;</a></span>focusGained()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Utils.NickNameField.focusGained </td>
+          <td>(</td>
+          <td class="paramtype">FocusEvent&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Overrides the focusGained method to hide the placeholder text when the field gains focus. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the FocusEvent representing the focus gained event </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa85ebd191903ecec439d84a1d7529fa2" name="aa85ebd191903ecec439d84a1d7529fa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa85ebd191903ecec439d84a1d7529fa2">&#9670;&#160;</a></span>focusLost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Utils.NickNameField.focusLost </td>
+          <td>(</td>
+          <td class="paramtype">FocusEvent&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Overrides the focusLost method to show the placeholder text when the field loses focus and no text is entered. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>the FocusEvent representing the focus lost event </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a49a5029d997d83a029ac6e52d36576eb" name="a49a5029d997d83a029ac6e52d36576eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49a5029d997d83a029ac6e52d36576eb">&#9670;&#160;</a></span>paintComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Utils.NickNameField.paintComponent </td>
+          <td>(</td>
+          <td class="paramtype">Graphics&#160;</td>
+          <td class="paramname"><em>g</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overrides the paintComponent method to display the placeholder text if the field is empty and the placeholder is set to be shown. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>the Graphics object used for painting </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/Acer/Documents/java/pacman/src/Utils/NickNameField.java</li>
 </ul>
