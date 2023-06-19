@@ -1,5 +1,9 @@
+import GameWindow.Pacman;
+
+/** @brief Main entry point of PacMan game program */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        // Run the Pacman game
+        Pacman.run();
     }
 }
