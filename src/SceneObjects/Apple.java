@@ -2,9 +2,7 @@ package SceneObjects;
 
 import java.awt.*;
 
-/**
- * @brief Represents apple object
- */
+/** @brief Represents apple object */
 public class Apple extends SceneObject{
     /**
      * @brief Apple object parametric constructor

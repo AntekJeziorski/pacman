@@ -7,20 +7,23 @@ import java.awt.*;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-/**
- * @brief Represents scene object
- */
+/** @brief Represents scene object */
 public class SceneObject {
     /** @brief Object x coordinates */
     protected int x;
+
     /** @brief Object y coordinates */
     protected int y;
+
     /** @brief Object width */
     protected int width;
+
     /** @brief Object height  */
     protected int height;
+
     /** @brief Object's image */
     protected Image image;
+
     /** @brief Object's rectangle representation in coordinate system */
     protected Rectangle rectangle;
 

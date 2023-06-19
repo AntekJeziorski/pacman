@@ -2,9 +2,7 @@ package SceneObjects;
 
 import java.awt.*;
 
-/**
- * @brief Represents air object
- */
+/** @brief Represents air object */
 public class Air extends SceneObject{
     /**
      * @brief Air object parametric constructor

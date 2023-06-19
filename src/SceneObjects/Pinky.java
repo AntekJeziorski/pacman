@@ -2,10 +2,7 @@ package SceneObjects;
 
 import javax.swing.*;
 
-/**
- * @brief Represents pink ghost
- *
- */
+/** @brief Represents pink ghost */
 public class Pinky extends Ghost{
     /**
      * @brief Pinky object parametric constructor

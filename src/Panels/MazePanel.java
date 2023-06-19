@@ -11,42 +11,47 @@ import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-/**
- * @brief Represents maze panel object
- */
+/** @brief Represents maze panel object */
 public class MazePanel extends JPanel implements ActionListener {
-
     /** @brief MazeGenerator object */
     private MazeGenerator mazeGenerator;
+
     /** @brief PacmanObject class object */
     private PacmanObject pacman;
+
     /** @brief Game timer */
     private final Timer timer;
+
     /** @brief KeyAdapter for pacman player control */
     private KeyAdapter pacmanKeyAdapter;
+
     /** @brief Current number of lives */
     private int lives = 3;
+
     /** @brief Current number of eaten dots */
     private int eatenDots = 0;
+
     /** @brief Current score */
     private long score = 0;
 
-
     /** @brief Red ghost object */
     private Blinky blinky;
+
     /** @brief Pink ghost object */
     private Pinky pinky;
+
     /** @brief Blue ghost object */
     private Inky inky;
+
     /** @brief Orange ghost object */
     private Clyde clyde;
+
     /** @brief PropertyChangeSupport handler */
     private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     /**
      * @brief Adds listener to pcs
      * @param listener  the PropertyChangeListener to be added
-     *
      */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         pcs.addPropertyChangeListener(listener);
@@ -54,14 +59,13 @@ public class MazePanel extends JPanel implements ActionListener {
 
     /**
      * @brief Non-parametric MazePanel constructor
-     *
      * Initializes game timer and all drawable objects
      */
     public MazePanel() {
         timer = new Timer(40, this);
         loadMaze();
         setPreferredSize(new Dimension(448, 496));
-        setBackground(Color.black);
+        setBackground(Color.BLACK);
         setLayout(null);
     }
 
@@ -94,9 +98,7 @@ public class MazePanel extends JPanel implements ActionListener {
         return (pacmanPosY + yOffset) * width + (pacmanPosX + xOffset);
     }
 
-    /**
-     * @brief Checks pacman collisions with walls
-     */
+    /** @brief Checks pacman collisions with walls */
     public void checkCollisions() {
         int width = 28;
         int pacmanPosX = pacman.getInfo().get("X") / pacman.getInfo().get("Width");
@@ -117,8 +119,8 @@ public class MazePanel extends JPanel implements ActionListener {
             } else
                 out[i] = false;
         }
-        pacman.setCollision(out);
 
+        pacman.setCollision(out);
     }
 
     /**
@@ -162,9 +164,7 @@ public class MazePanel extends JPanel implements ActionListener {
         Toolkit.getDefaultToolkit().sync();
     }
 
-    /**
-     * @brief Initializes all interactive objects on maze panel
-     */
+    /** @brief Initializes all interactive objects on maze panel */
     private void loadMaze() {
         mazeGenerator = new MazeGenerator();
         pacman = new PacmanObject(14, 23);
@@ -189,9 +189,7 @@ public class MazePanel extends JPanel implements ActionListener {
         setFocusable(true);
     }
 
-    /**
-     * @brief Checks collisions with dots and apples, and calculates score
-     */
+    /** @brief Checks collisions with dots and apples, and calculates score */
     private void collectDots() {
         int elementIndex = calculateElementIndex();
         SceneObject block = mazeGenerator.getDots().get(elementIndex);
@@ -215,7 +213,6 @@ public class MazePanel extends JPanel implements ActionListener {
             }
         }
 
-//        System.out.println(eatenDots);
         if (eatenDots == 240) {
             timer.stop();
             eatenDots = 0;
@@ -291,13 +288,9 @@ public class MazePanel extends JPanel implements ActionListener {
             pinkyThread.join();
             blinkyThread.join();
             thread.join();
-        } catch (InterruptedException ex) {
-            throw new RuntimeException(ex);
-        }
-
+        } catch (InterruptedException ex) { throw new RuntimeException(ex); }
 
         collectDots();
-
         repaint();
     }
 

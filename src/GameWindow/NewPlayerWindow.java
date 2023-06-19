@@ -1,5 +1,6 @@
 package GameWindow;
 
+import Utils.FontUtils;
 import Utils.NickNameField;
 
 import javax.swing.*;
@@ -9,29 +10,39 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
+/** @brief The NewPlayerWindow class represents the window for creating a new player in the game. */
 public class NewPlayerWindow extends JPanel implements ActionListener {
-    private final JButton BackButton = new JButton("Back");
-    private final JButton PlayButton = new JButton("Play");
-    private final JTextField NickName = new NickNameField("Enter nickname");
-    private final JLabel ErrorLabel = new JLabel();
-    private Font PixelFont;
+
+    /** @brief JButton taking the user back to the main menu */
+    private final JButton backButton = new JButton("Back");
+
+    /** @brief JButton taking the user to the game window */
+    private final JButton playButton = new JButton("Play");
+
+    /** @brief JTextField to specify username */
+    private final JTextField nickName = new NickNameField("Enter nickname");
+
+    /** @brief JLabel for displaying error information */
+    private final JLabel errorLabel = new JLabel();
+
+    /** @brief Stylised custom font */
+    private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
+
+    /**
+     * @brief Constructs a new NewPlayerWindow object
+     * Initializes the layout and sets the background color
+     */
     public NewPlayerWindow() {
         setLayout(new GridBagLayout());
-        setBackground(new Color(0, 0, 0));
+        setBackground(Color.BLACK);
         initialize();
     }
-    private void readFonts(){
-        try {
-            Font pixelFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/emulogic.ttf"));
-            PixelFont = pixelFont.deriveFont(16f);
-        } catch (FontFormatException | IOException e) {e.printStackTrace();}
-    }
+
+    /** @brief Initializes the components and adds them to the window */
     private void initialize() {
-        readFonts();
         GridBagConstraints constraints = new GridBagConstraints();
+
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10, 0, 10, 0);
 
@@ -41,7 +52,7 @@ public class NewPlayerWindow extends JPanel implements ActionListener {
         Title.setEditable(false);
         Title.setBackground(Color.BLACK);
         Title.setForeground(Color.YELLOW);
-        Title.setFont(PixelFont.deriveFont(36f));
+        Title.setFont(pixelFont.deriveFont(36f));
         Title.setText(aboutTitle);
         Title.setBorder(new LineBorder(Color.BLACK));
 
@@ -51,7 +62,7 @@ public class NewPlayerWindow extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.CENTER;
         add(Title, constraints);
 
-        NickName.getDocument().addDocumentListener(new DocumentListener() {
+        nickName.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) { validateText(); }
             @Override
@@ -60,62 +71,67 @@ public class NewPlayerWindow extends JPanel implements ActionListener {
             public void changedUpdate(DocumentEvent e) { validateText();}
             private void validateText() {
                 SwingUtilities.invokeLater(() ->{
-                if (NickName.getText().length() > 8) {
-                    ErrorLabel.setVisible(true);
-                    NickName.setText("");
-                    ErrorLabel.setText("Nickname is too long!");
+                if (nickName.getText().length() > 8) {
+                    errorLabel.setVisible(true);
+                    nickName.setText("");
+                    errorLabel.setText("Nickname is too long!");
                 }
             });
             }
         });
 
-        NickName.setPreferredSize(new Dimension(250,60));
-        NickName.setBackground(new Color(255, 255, 0));
-        NickName.addActionListener(this);
-        NickName.setFont(PixelFont);
+        nickName.setPreferredSize(new Dimension(250,60));
+        nickName.setBackground(new Color(255, 255, 0));
+        nickName.addActionListener(this);
+        nickName.setFont(pixelFont.deriveFont(16f));
         constraints.gridx = 0;
         constraints.gridy = 1;
-        add(NickName, constraints);
+        add(nickName, constraints);
 
-        ErrorLabel.setBackground(new Color(255, 255, 0));
-        ErrorLabel.setForeground(new Color(255, 255, 255));
-        ErrorLabel.setVisible(false);
-        ErrorLabel.setFont(PixelFont.deriveFont(10f));
+        errorLabel.setBackground(new Color(255, 255, 0));
+        errorLabel.setForeground(new Color(255, 255, 255));
+        errorLabel.setVisible(false);
+        errorLabel.setFont(pixelFont.deriveFont(10f));
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.CENTER;
         constraints.gridx = 0;
         constraints.gridy = 2;
-        add(ErrorLabel, constraints);
+        add(errorLabel, constraints);
 
-        PlayButton.setPreferredSize(new Dimension(250,60));
-        PlayButton.setBackground(new Color(255, 255, 0));
-        PlayButton.setFocusable(false);
-        PlayButton.addActionListener(this);
-        PlayButton.setFont(PixelFont);
+        playButton.setPreferredSize(new Dimension(250,60));
+        playButton.setBackground(new Color(255, 255, 0));
+        playButton.setFocusable(false);
+        playButton.addActionListener(this);
+        playButton.setFont(pixelFont.deriveFont(16f));
         constraints.gridx = 0;
         constraints.gridy = 3;
-        add(PlayButton, constraints);
+        add(playButton, constraints);
 
-        BackButton.setPreferredSize(new Dimension(250,60));
-        BackButton.setBackground(new Color(255, 255, 0));
-        BackButton.setFocusable(false);
-        BackButton.addActionListener(this);
-        BackButton.setFont(PixelFont);
+        backButton.setPreferredSize(new Dimension(250,60));
+        backButton.setBackground(new Color(255, 255, 0));
+        backButton.setFocusable(false);
+        backButton.addActionListener(this);
+        backButton.setFont(pixelFont.deriveFont(16f));
         constraints.gridx = 0;
         constraints.gridy = 4;
-        add(BackButton, constraints);
+        add(backButton, constraints);
     }
+
+    /**
+     * @brief Handles the button click events
+     * @param e The action event
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if (e.getSource() == BackButton){ Pacman.openMainWindow(); }
-        if (e.getSource() == PlayButton){
-            if (NickName.getText().length() == 0){
-                ErrorLabel.setVisible(true);
-                ErrorLabel.setText("Nickname is too short!");
+        if (e.getSource() == backButton){ Pacman.openMainWindow(); }
+        if (e.getSource() == playButton){
+            if (nickName.getText().length() == 0){
+                errorLabel.setVisible(true);
+                errorLabel.setText("Nickname is too short!");
             }
-            else{
-                Pacman.openGameWindow(NickName.getText());
+            else {
+                Pacman.openGameWindow(nickName.getText());
             }
         }
     }

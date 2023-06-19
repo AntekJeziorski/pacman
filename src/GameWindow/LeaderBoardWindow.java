@@ -1,47 +1,48 @@
 package GameWindow;
 
-import CsvReader.Csvreader;
+import Utils.FontUtils;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
+import static Utils.LeaderboardManager.getScoreRecords;
+
+/** @brief The LeaderBoardWindow class represents the leaderboard window of the game. */
 public class LeaderBoardWindow extends JPanel implements ActionListener {
-    private final JButton BackButton = new JButton("Back");
-    private Font PixelFont;
+    /** @brief JButton taking the user back to the main menu */
+    private final JButton backButton = new JButton("Back");
+
+    /** @brief Stylised custom font */
+    private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
+
+    /**
+     * @brief Constructs a new LeaderBoardWindow object.
+     * Initializes the layout and sets the background color.
+     */
     public LeaderBoardWindow() {
         setLayout(new GridBagLayout());
-        setBackground(new Color(0, 0, 0));
+        setBackground(Color.BLACK);
         initialize();
     }
 
-    private void readFonts(){
-        try {
-            Font pixelFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/emulogic.ttf"));
-            PixelFont = pixelFont.deriveFont(16f);
-        } catch (FontFormatException | IOException e) {e.printStackTrace();}
-    }
+    /** @brief Initializes the components and adds them to the window */
     private void initialize() {
-        Csvreader csv = new Csvreader();
-
-        readFonts();
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(10, 0, 10, 0);
+        constraints.insets = new Insets(0, 0, 40, 0);
 
         String aboutTitle = "Leader Board";
         JEditorPane Title = new JEditorPane();
-        Title.setPreferredSize(new Dimension(450, 80));
+        Title.setPreferredSize(new Dimension(450, 60));
         Title.setEditable(false);
         Title.setFocusable(false);
         Title.setBackground(Color.BLACK);
         Title.setForeground(Color.YELLOW);
-        Title.setFont(PixelFont.deriveFont(24f));
+        Title.setFont(pixelFont.deriveFont(28f));
         Title.setText(aboutTitle);
         Title.setBorder(new LineBorder(Color.BLACK));
         constraints.gridx = 0;
@@ -50,39 +51,60 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
         constraints.fill = GridBagConstraints.CENTER;
         add(Title, constraints);
 
-        ArrayList<ArrayList<String>> leaderBoard = csv.getParsedFile();
+        ArrayList<ArrayList<String>> leaderBoard = getScoreRecords();
         DefaultListModel<String> listModel = new DefaultListModel<>();
-        int size = listModel.getSize();
-        for (int i = 0; i < leaderBoard.size(); i++) {
-            String concatenatedString = String.join(" - ", leaderBoard.get(i));
-            listModel.addElement(i+1 + ". " + concatenatedString);
+
+        for (int i = 0; i < 5; i++) {
+            ArrayList<String> record = leaderBoard.get(i);
+            String index = String.valueOf(i + 1);
+            String playerName = record.get(0);
+            String score = record.get(1);
+            listModel.addElement(index + ". " + playerName + " - " + score + " pts");
             listModel.addElement(" ");
         }
-        JList<String> list = new JList<>(listModel);
 
-        list.setPreferredSize(new Dimension(450, 250));
+        JList<String> list = new JList<>(listModel);
+        list.setCellRenderer(new CenteredCellRenderer());
+        list.setPreferredSize(new Dimension(450, 200));
         list.setBackground(new Color(255, 255, 0));
         list.setFocusable(false);
-        list.setFont(PixelFont);
+        list.setFont(pixelFont.deriveFont(13f));
         constraints.gridx = 0;
         constraints.gridy = 1;
+        constraints.anchor = GridBagConstraints.CENTER;
+        constraints.insets = new Insets(0, 0, 10, 0);  // Optional: Add padding
         add(list, constraints);
 
-        BackButton.setPreferredSize(new Dimension(250,60));
-        BackButton.setBackground(new Color(255, 255, 0));
-        BackButton.setFocusable(false);
-        BackButton.addActionListener(this);
-        BackButton.setFont(PixelFont);
+        constraints.insets = new Insets(40, 0, 0, 0);
+        backButton.setPreferredSize(new Dimension(250,60));
+        backButton.setBackground(new Color(255, 255, 0));
+        backButton.setFocusable(false);
+        backButton.addActionListener(this);
+        backButton.setFont(pixelFont.deriveFont(16f));
         constraints.gridx = 0;
         constraints.gridy = 2;
-        add(BackButton, constraints);
-    }
-    private void getLeaderBoard(){
+        add(backButton, constraints);
 
     }
+
+    /** @brief The CenteredCellRenderer class is a custom list cell renderer that centers the text horizontally */
+    private static class CenteredCellRenderer extends DefaultListCellRenderer {
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                                                      boolean isSelected, boolean cellHasFocus) {
+            super.getListCellRendererComponent(list, value, index, false, cellHasFocus);
+            setHorizontalAlignment(SwingConstants.LEFT);
+            setHorizontalTextPosition(SwingConstants.LEFT);
+            setPreferredSize(new Dimension(list.getWidth(), getPreferredSize().height));
+            return this;
+        }
+    }
+
+    /**
+     * @brief Handles the button click events
+     * @param e The action event
+     */
     @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        if (e.getSource() == BackButton){ Pacman.openMainWindow(); }
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == backButton){ Pacman.openMainWindow(); }
     }
 }
