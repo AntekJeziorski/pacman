@@ -17,7 +17,7 @@ public class MazeGenerator {
     /**
      * @brief Representation of the game board
      * Maze consisting of elements such as no passage: 0, wall: 1, point: 2 and apple: 3
-     * */
+     */
     static final int [][] map = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
                     {1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,1},
                     {1,2,1,1,1,1,2,1,1,1,1,1,2,1,1,2,1,1,1,1,1,2,1,1,1,1,2,1},
