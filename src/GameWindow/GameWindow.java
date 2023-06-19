@@ -10,17 +10,32 @@ import java.awt.*;
 import static Utils.LeaderboardManager.getBestScore;
 import static Utils.LeaderboardManager.saveScoreRecord;
 
+/** @brief The GameWindow class represents the main game window of the Pacman game */
 public class GameWindow extends JPanel {
-    private String nickname;
+
+    /** @brief Number of points scored in a single game */
     private long score = 0;
+
+    /** @brief The number of "lives" - the player's attempts in a single game, which, once they are zeroed out, ends. */
     private int lives = 3;
+
+    /** @brief The name of the player to whom the points earned in the game will be assigned */
+    private final String nickname;
+
+    /** @brief JPanel derived class representing a maze - game board */
     private final MazePanel mazePanel;
-    private final JLabel ScoreValue = new JLabel("0");
-    private final JLabel topScoreValue = new JLabel(String.valueOf(getBestScore()));
+
+    /** @brief JLabel representing the number of remaining approaches of a player*/
     private final JLabel Lives = new JLabel(String.valueOf(lives));
-    private final Image pacManPicture = ImageUtils.createImage("src/images/pacman128.png");
+
+    /** @brief Stylised custom font */
     private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
 
+    /**
+     * @brief Constructs a new GameWindow object.
+     * Initializes the layout and sets the background color.
+     * @param playerNickname The nickname of the player.
+     */
     public GameWindow(String playerNickname) {
         mazePanel = new MazePanel();
         nickname = playerNickname;
@@ -30,12 +45,14 @@ public class GameWindow extends JPanel {
         initialize();
     }
 
+    /** @brief Initializes the components and adds them to the window */
     private void initialize() {
         GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.CENTER;
 
+        JLabel ScoreValue = new JLabel("0");
         ScoreValue.setPreferredSize(new Dimension(448,60));
         ScoreValue.setFont(pixelFont.deriveFont(16f));
         ScoreValue.setForeground(Color.WHITE);
@@ -73,6 +90,7 @@ public class GameWindow extends JPanel {
 
         nestedPanel.setBackground(Color.BLACK);
 
+        Image pacManPicture = ImageUtils.createImage("src/images/pacman128.png");
         ImageIcon bigPacManScaled = new ImageIcon(pacManPicture.getScaledInstance(32, 32, Image.SCALE_SMOOTH));
         JLabel pacManIcon = new JLabel(bigPacManScaled);
         pacManIcon.setPreferredSize(new Dimension(50,50));
@@ -105,6 +123,7 @@ public class GameWindow extends JPanel {
         constraintsNested.fill = GridBagConstraints.CENTER;
         nestedPanel.add(bestScoreText, constraintsNested);
 
+        JLabel topScoreValue = new JLabel(String.valueOf(getBestScore()));
         topScoreValue.setFont(pixelFont.deriveFont(12f));
         topScoreValue.setForeground(Color.WHITE);
         constraintsNested.insets = new Insets(10, 20, 0, 0);
@@ -123,8 +142,8 @@ public class GameWindow extends JPanel {
         mazePanel.initStartAdapter();
     }
 
-    public void requestFocusInMazePanel()
-    {
+    /** @brief Requests focus in the maze panel */
+    public void requestFocusInMazePanel() {
         mazePanel.requestFocusInWindow();
     }
 }

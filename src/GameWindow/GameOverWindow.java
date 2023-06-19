@@ -8,17 +8,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Utils.LeaderboardManager.getBestScore;
+
+/** @brief The GameOverWindow class represents the game over window */
 public class GameOverWindow extends JPanel implements ActionListener {
+    /** @brief JButton taking the user back to the main menu */
     private final JButton backButton = new JButton("Back");
+
+    /** @brief Number of points scored in a single game */
     private final long score;
+
+    /** @brief Stylised custom font */
     private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
+
+    /**
+     * @brief Constructs a new GameOverWindow object
+     * Initializes the layout and sets the background color
+     * @param earnedPoints The number of points earned in the game
+     */
     public GameOverWindow(long earnedPoints) {
         score = earnedPoints;
         setLayout(new GridBagLayout());
         setBackground(Color.BLACK);
         initialize();
     }
-
+    /** @brief Initializes the components and adds them to the window */
     private void initialize() {
         GridBagConstraints constraints = new GridBagConstraints();
 
@@ -85,6 +98,10 @@ public class GameOverWindow extends JPanel implements ActionListener {
         add(backButton, constraints);
     }
 
+    /**
+     * @brief Handles the button click events
+     * @param e The action event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton){

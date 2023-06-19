@@ -2,9 +2,7 @@ package SceneObjects;
 
 import java.awt.*;
 
-/**
- * @brief Represents wall object
- */
+/** @brief Represents wall object */
 public class Wall extends SceneObject {
     /**
      * @brief Wall object parametric constructor

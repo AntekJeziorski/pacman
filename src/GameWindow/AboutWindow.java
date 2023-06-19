@@ -9,16 +9,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/** @brief The AboutWindow class represents the about window that contains information about the game */
 public class AboutWindow extends JPanel implements ActionListener {
+    /** @brief JButton taking the user back to the main menu */
     private final JButton backButton = new JButton("Back");
-    private final Image bigPacMan = ImageUtils.createImage("src/images/pacman128.png");
+
+    /** @brief Stylised custom font */
     private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
+
+    /**
+     * @brief Constructs a new AboutWindow object
+     * Initializes the layout and sets the background color
+     */
     public AboutWindow() {
         setLayout(new GridBagLayout());
         setBackground(Color.BLACK);
         initialize();
     }
 
+    /** @brief Initializes the components and adds them to the window */
     private void initialize() {
         GridBagConstraints constraints = new GridBagConstraints();
 
@@ -80,6 +89,7 @@ public class AboutWindow extends JPanel implements ActionListener {
         constraints.gridy = 2;
         add(backButton, constraints);
 
+        Image bigPacMan = ImageUtils.createImage("src/images/pacman128.png");
         ImageIcon bigPacManScaled = new ImageIcon(bigPacMan.getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel gifLabel = new JLabel(bigPacManScaled);
         gifLabel.setPreferredSize(new Dimension(50,50));
@@ -89,9 +99,12 @@ public class AboutWindow extends JPanel implements ActionListener {
         add(gifLabel, constraints);
     }
 
+    /**
+     * @brief Handles the button click events
+     * @param e The action event
+     */
     @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        if (e.getSource() == backButton){ Pacman.openMainWindow(); }
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == backButton) { Pacman.openMainWindow(); }
     }
 }

@@ -1,118 +1,131 @@
 package GameWindow;
 
+import Utils.FontUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
+/** @brief The MainWindow class represents the main menu window of the game */
 public class MainWindow extends JPanel implements ActionListener {
-    private final ImageIcon PacManGif = new ImageIcon("src/images/pacman.gif");
-    private final JButton NewGameButton = new JButton("New Game");
-    private final JButton LeaderButton = new JButton("Leader Board");
-    private final JButton AboutButton  = new JButton("About");
-    private final JButton ExitButton = new JButton("Exit");
-    private final JLabel BottomLabel = new JLabel("Developed by: S.A.J - 2023");
-    private Font TitleFont;
-    private Font ButtonFont;
 
+    /** @brief JButton taking the user to the new game window */
+    private final JButton newGameButton = new JButton("New Game");
+
+    /** @brief JButton taking the user to the leaderboard window */
+    private final JButton leaderButton = new JButton("Leader Board");
+
+    /** @brief JButton taking the user to the about window */
+    private final JButton aboutButton = new JButton("About");
+
+    /** @brief JButton to close the programme */
+    private final JButton exitButton = new JButton("Exit");
+
+    /** @brief Stylised custom font for game title */
+    private final Font titleFont = FontUtils.readFonts("src/fonts/PAC-FONT.TTF");
+
+    /** @brief Stylised custom font */
+    private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
+
+    /**
+     * @brief Constructs a new MainWindow object
+     * Initializes the layout and sets the background color
+     */
     public MainWindow() {
         setLayout(new GridBagLayout());
         setBackground(Color.BLACK);
         initialize();
     }
 
-    private void readFonts(){
-        try {
-            Font titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/PAC-FONT.TTF"));
-            TitleFont = titleFont.deriveFont(48f);
-            Font buttonFont = Font.createFont(Font.TRUETYPE_FONT, new File("src/fonts/emulogic.ttf"));
-            ButtonFont = buttonFont.deriveFont(16f);
-        } catch (FontFormatException | IOException e) {e.printStackTrace();}
-    }
+    /** @brief Initializes the components and adds them to the window */
     private void initialize() {
         GridBagConstraints constraints = new GridBagConstraints();
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(10, 0, 10, 0);
 
-        readFonts();
-
         JLabel title = new JLabel("PaCMaN");
         title.setBounds(0, 0, 100, 40);
-        title.setFont(TitleFont);
+        title.setFont(titleFont.deriveFont(48f));
         title.setForeground(Color.WHITE);
+
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.CENTER;
         add(title, constraints);
 
-        JLabel gifLabel = new JLabel(PacManGif);
+        ImageIcon pacManGif = new ImageIcon("src/images/pacman.gif");
+        JLabel gifLabel = new JLabel(pacManGif);
+
         constraints.gridx = 0;
         constraints.gridy = 1;
         add(gifLabel, constraints);
 
-        NewGameButton.setPreferredSize(new Dimension(250,60));
-        NewGameButton.setBackground(new Color(255, 255, 0));
-        NewGameButton.setFocusable(false);
-        NewGameButton.addActionListener(this);
-        NewGameButton.setFont(ButtonFont.deriveFont(16f));
+        newGameButton.setPreferredSize(new Dimension(250,60));
+        newGameButton.setBackground(new Color(255, 255, 0));
+        newGameButton.setFocusable(false);
+        newGameButton.addActionListener(this);
+        newGameButton.setFont(pixelFont.deriveFont(16f));
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        add(NewGameButton, constraints);
+        add(newGameButton, constraints);
 
-        LeaderButton.setPreferredSize(new Dimension(250,60));
-        LeaderButton.setBackground(new Color(255, 255, 0));
-        LeaderButton.setFocusable(false);
-        LeaderButton.addActionListener(this);
-        LeaderButton.setFont(ButtonFont.deriveFont(14f));
+        leaderButton.setPreferredSize(new Dimension(250,60));
+        leaderButton.setBackground(new Color(255, 255, 0));
+        leaderButton.setFocusable(false);
+        leaderButton.addActionListener(this);
+        leaderButton.setFont(pixelFont.deriveFont(14f));
 
         constraints.gridx = 0;
         constraints.gridy = 3;
-        add(LeaderButton, constraints);
+        add(leaderButton, constraints);
 
-        AboutButton.setPreferredSize(new Dimension(250,60));
-        AboutButton.setBackground(new Color(255, 255, 0));
-        AboutButton.setFocusable(false);
-        AboutButton.addActionListener(this);
-        AboutButton.setFont(ButtonFont.deriveFont(16f));
+        aboutButton.setPreferredSize(new Dimension(250,60));
+        aboutButton.setBackground(new Color(255, 255, 0));
+        aboutButton.setFocusable(false);
+        aboutButton.addActionListener(this);
+        aboutButton.setFont(pixelFont.deriveFont(16f));
 
         constraints.gridx = 0;
         constraints.gridy = 4;
-        add(AboutButton, constraints);
+        add(aboutButton, constraints);
 
-        ExitButton.setPreferredSize(new Dimension(250,60));
-        ExitButton.setBackground(new Color(255, 255, 0));
-        ExitButton.setFocusable(false);
-        ExitButton.addActionListener(this);
-        ExitButton.setFont(ButtonFont.deriveFont(16f));
+        exitButton.setPreferredSize(new Dimension(250,60));
+        exitButton.setBackground(new Color(255, 255, 0));
+        exitButton.setFocusable(false);
+        exitButton.addActionListener(this);
+        exitButton.setFont(pixelFont.deriveFont(16f));
 
         constraints.gridx = 0;
         constraints.gridy = 5;
-        add(ExitButton, constraints);
+        add(exitButton, constraints);
 
-        BottomLabel.setForeground(Color.GRAY);
-        BottomLabel.setFont(ButtonFont.deriveFont(8f));
+        JLabel bottomLabel = new JLabel("Developed by: S.A.J - 2023");
+        bottomLabel.setForeground(Color.GRAY);
+        bottomLabel.setFont(pixelFont.deriveFont(8f));
 
         constraints.gridx = 0;
         constraints.gridy = 6;
         constraints.anchor = GridBagConstraints.CENTER;
         constraints.fill = GridBagConstraints.CENTER;
         constraints.insets = new Insets(20, 0, 10, 0);
-
-        add(BottomLabel, constraints);
+        add(bottomLabel, constraints);
     }
 
+    /**
+     * @brief Handles the button click events
+     * @param e The action event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == NewGameButton) { Pacman.openNewPlayerWindow(); }
-        if (e.getSource() == LeaderButton) { Pacman.openLeaderBoardWindow(); }
-        if (e.getSource() == AboutButton) { Pacman.openAboutWindow(); }
-        if (e.getSource() == ExitButton) { System.exit(0); }
+        if (e.getSource() == newGameButton) { Pacman.openNewPlayerWindow(); }
+        if (e.getSource() == leaderButton) { Pacman.openLeaderBoardWindow(); }
+        if (e.getSource() == aboutButton) { Pacman.openAboutWindow(); }
+        if (e.getSource() == exitButton) { System.exit(0); }
     }
 
 }

@@ -3,11 +3,8 @@ package Settings;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-/**
- * @brief Represents controls object
- */
+/** @brief Represents controls object */
 public class Controls extends KeyAdapter {
-
     /** @brief Currently set direction */
     private int direction = -1;
 

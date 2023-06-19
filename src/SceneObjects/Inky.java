@@ -2,10 +2,7 @@ package SceneObjects;
 
 import javax.swing.*;
 
-/**
- * @brief Represents blue ghost
- *
- */
+/** @brief Represents blue ghost */
 public class Inky extends Ghost{
 
     /** @brief Blinky x coordinate */

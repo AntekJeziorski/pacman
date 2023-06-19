@@ -10,20 +10,36 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
+/** @brief The NewPlayerWindow class represents the window for creating a new player in the game. */
 public class NewPlayerWindow extends JPanel implements ActionListener {
+
+    /** @brief JButton taking the user back to the main menu */
     private final JButton backButton = new JButton("Back");
+
+    /** @brief JButton taking the user to the game window */
     private final JButton playButton = new JButton("Play");
+
+    /** @brief JTextField to specify username */
     private final JTextField nickName = new NickNameField("Enter nickname");
+
+    /** @brief JLabel for displaying error information */
     private final JLabel errorLabel = new JLabel();
+
+    /** @brief Stylised custom font */
     private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
+
+    /**
+     * @brief Constructs a new NewPlayerWindow object
+     * Initializes the layout and sets the background color
+     */
     public NewPlayerWindow() {
         setLayout(new GridBagLayout());
         setBackground(Color.BLACK);
         initialize();
     }
+
+    /** @brief Initializes the components and adds them to the window */
     private void initialize() {
         GridBagConstraints constraints = new GridBagConstraints();
 
@@ -100,6 +116,11 @@ public class NewPlayerWindow extends JPanel implements ActionListener {
         constraints.gridy = 4;
         add(backButton, constraints);
     }
+
+    /**
+     * @brief Handles the button click events
+     * @param e The action event
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {

@@ -6,9 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @brief Represents maze generator object
- */
+/** @brief Represents maze generator object */
 public class MazeGenerator {
     /** @brief List of walls */
     private final List<SceneObject> walls;

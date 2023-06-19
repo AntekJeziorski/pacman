@@ -7,9 +7,7 @@ import java.awt.*;
 
 import static java.lang.Math.abs;
 
-/**
- * @brief Represents pacman object
- */
+/** @brief Represents pacman object */
 public class PacmanObject extends SceneObject implements Runnable {
     /** @brief Handler for pacman keyboard input */
     private final Controls controls = new Controls();

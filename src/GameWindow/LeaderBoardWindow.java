@@ -1,6 +1,5 @@
 package GameWindow;
 
-import Utils.LeaderboardManager;
 import Utils.FontUtils;
 
 import javax.swing.*;
@@ -12,15 +11,25 @@ import java.util.ArrayList;
 
 import static Utils.LeaderboardManager.getScoreRecords;
 
+/** @brief The LeaderBoardWindow class represents the leaderboard window of the game. */
 public class LeaderBoardWindow extends JPanel implements ActionListener {
+    /** @brief JButton taking the user back to the main menu */
     private final JButton backButton = new JButton("Back");
+
+    /** @brief Stylised custom font */
     private final Font pixelFont = FontUtils.readFonts("src/fonts/emulogic.ttf");
+
+    /**
+     * @brief Constructs a new LeaderBoardWindow object.
+     * Initializes the layout and sets the background color.
+     */
     public LeaderBoardWindow() {
         setLayout(new GridBagLayout());
         setBackground(Color.BLACK);
         initialize();
     }
 
+    /** @brief Initializes the components and adds them to the window */
     private void initialize() {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -77,6 +86,8 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
         add(backButton, constraints);
 
     }
+
+    /** @brief The CenteredCellRenderer class is a custom list cell renderer that centers the text horizontally */
     private static class CenteredCellRenderer extends DefaultListCellRenderer {
         public Component getListCellRendererComponent(JList<?> list, Object value, int index,
                                                       boolean isSelected, boolean cellHasFocus) {
@@ -87,9 +98,13 @@ public class LeaderBoardWindow extends JPanel implements ActionListener {
             return this;
         }
     }
+
+    /**
+     * @brief Handles the button click events
+     * @param e The action event
+     */
     @Override
-    public void actionPerformed(ActionEvent e)
-    {
+    public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton){ Pacman.openMainWindow(); }
     }
 }

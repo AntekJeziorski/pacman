@@ -2,10 +2,7 @@ package SceneObjects;
 
 import javax.swing.*;
 
-/**
- * @brief Represents red ghost
- *
- */
+/** @brief Represents red ghost */
 public class Blinky extends Ghost{
     /**
      * @brief Blinky object parametric constructor

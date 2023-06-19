@@ -4,10 +4,7 @@ import javax.swing.*;
 
 import static java.lang.Math.pow;
 
-/**
- * @brief Represents orange ghost
- *
- */
+/** @brief Represents orange ghost */
 public class Clyde extends Ghost{
     /**
      * @brief Clyde object parametric constructor

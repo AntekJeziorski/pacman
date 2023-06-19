@@ -5,9 +5,7 @@ import java.awt.*;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
-/**
- * @brief Represents ghost object
- */
+/** @brief Represents ghost object */
 public class Ghost extends SceneObject implements Runnable {
 
     /** @brief Pacman x coordinate */

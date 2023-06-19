@@ -2,9 +2,7 @@ package SceneObjects;
 
 import java.awt.*;
 
-/**
- * @brief Represents dot object
- */
+/** @brief Represents dot object */
 public class Dot extends SceneObject{
     /**
      * @brief Dot object parametric constructor
